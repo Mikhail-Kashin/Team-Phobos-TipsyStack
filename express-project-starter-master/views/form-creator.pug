@@ -1,0 +1,12 @@
+mixin formCreator(fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null)
+  div(class='form-inputs')
+    label(for=fieldName)= labelText
+    input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-data')
+
+mixin validationErrorSummary(errors)
+  if errors
+    div(class='alert alert-danger' role='alert')
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error

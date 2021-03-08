@@ -1,0 +1,10 @@
+extends layout
+include form-creator
+block content
+  +validationErrorSummary(errors)
+  form(action='/users/login', method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +formCreator('email', 'Email Address', '', 'email', 'Enter Email')
+    +formCreator('password', 'Password', '', 'password', 'Enter Password')
+    div
+      button(type='submit' class='btn') Log in
