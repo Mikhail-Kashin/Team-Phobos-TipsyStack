@@ -123,7 +123,7 @@ router.get('/signup', csrfProtection, (req, res)=>{
   })
 });
 
-router.post('/sigup', csrfProtection, registrationValidators, asyncHandler(async(req, res) =>{
+router.post('/signup', csrfProtection, registrationValidators, asyncHandler(async(req, res) =>{
   const {
     userName,
     email,
