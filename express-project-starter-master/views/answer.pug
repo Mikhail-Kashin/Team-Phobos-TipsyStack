@@ -1,0 +1,8 @@
+extends layout
+include form-creator
+block content
+  +validationErrorSummary(errors)
+  form(method='post' action='/Cocktail-Q/#{qId}/Cocktail-A')
+    label(for="answer") Cocktail-A
+    textarea(name="answer" value="" placeholder="Write your answer here")
+      button(class="btn" type="submit") Submit

@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const cocktailqRouter = require('./routes/cocktailq')
 const { restoreUser } = require('./auth');
+const cocktailARouter = require('./routes/cocktailAs');
 
 const app = express();
 
@@ -41,6 +42,7 @@ store.sync();
 app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/Cocktail-Q/:qId/Cocktail-A', cocktailARouter);
 app.use('/CocktailQs', cocktailqRouter)
 
 
