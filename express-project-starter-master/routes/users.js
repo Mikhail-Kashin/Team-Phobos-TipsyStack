@@ -155,6 +155,12 @@ router.post('/signup', csrfProtection, registrationValidators, asyncHandler(asyn
   }
 }));
 
+router.post('/demo', async (req, res) => {
+  const user = await User.findOne({ where: { email: 'Demo@demo.com'}})
+  console.log(user)
+  return loginUser(req, res, user);
+})
+
 
 
 module.exports = router;

@@ -1,10 +1,12 @@
 
 const { User } = require('./db/models')
 
+
 const loginUser = (req, res, user) => {
     req.session.auth = {
         userId: user.id,
     };
+    console.log(req.session)
     //need to test redirecting
     req.session.save(() =>{
         res.redirect('/');

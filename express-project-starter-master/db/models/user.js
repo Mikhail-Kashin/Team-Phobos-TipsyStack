@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.CocktailQ, {foreignKey: 'userId'});
+    User.hasMany(models.CocktailA, {foreignKey: 'userId'});
+    User.hasMany(model.Vote, {foreignKey: 'userId'});
+    
   };
   return User;
 };
