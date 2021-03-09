@@ -5,4 +5,7 @@ block content
   h2 Your CocktailQs
   each cocktailq in cocktailqs
     div(class='most recent questions')
-      a(href='/CocktailQs')= cocktailq.question
+      a(href=`/CocktailQs/${cocktailq.id}`)= cocktailq.question
+  div
+    a(href='/CocktailQs/new')
+      button( type='submit' class='btn') Ask a new Cocktail-Q

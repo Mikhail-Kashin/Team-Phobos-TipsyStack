@@ -3,4 +3,10 @@ include form-creator
 block content
   +validationErrorSummary(errors)
   form(action='/CocktailQs/new' method='post')
-    input(type='text')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +formCreator('question', 'Body', '', 'text', 'Please Enter CocktailQ here...')
+    div
+      button(type='submit' class='btn') Post Cocktail-Q
+
+
+//- fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null

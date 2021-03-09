@@ -29,7 +29,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
 
         order: [
             ['createdAt',
-            'ASC']
+            'DESC']
         ],
         limit: 10
 
@@ -37,7 +37,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
     res.render("cocktail-q", { cocktailqs, csrfToken: req.csrfToken() });
 }))
 router.get('/new', csrfProtection, asyncHandler(async (req, res) => {
-    res.render('cocktailq-question', {csrfToken: csrfToken()})
+    res.render('cocktailq-question', {csrfToken: req.csrfToken()})
 }))
 
 
@@ -45,9 +45,11 @@ router.post('/new', csrfProtection, cocktailQValidators, asyncHandler(async (req
     const {
         question,
     } = req.body
-    await CocktailQ.create({question})
-    res.redirect('/Cocktail-Q')
-}))
+    await CocktailQ.create({question, userId: req.session.auth.userId})
+    req.session.save(() => {
+        res.redirect('/CocktailQs')
+    })
+}));
 
 router.get('/id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const cocktailq = await CocktailQ.findOne({
