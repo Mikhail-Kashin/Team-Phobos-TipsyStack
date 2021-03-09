@@ -1,0 +1,6 @@
+extends layout
+include form-creator
+block content
+  +validationErrorSummary(errors)
+  form(action='/CocktailQs/new' method='post')
+    input(type='text')
