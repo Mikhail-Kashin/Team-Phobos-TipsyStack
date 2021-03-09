@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 const { CocktailQ } = require('../db/models');
 
 
+
 const cocktailQNotFoundError = (id) => {
   const err = Error("Cocktail-Q not found");
   err.errors = [`Cocktail-Q with id of ${id} could not be found.`];
@@ -13,22 +14,25 @@ const cocktailQNotFoundError = (id) => {
   return err;
 };
 const cocktailQValidators = [
-   
+
     check('question')
         .exists({ checkFalsy: true })
         .withMessage('FIELD REQUIRED')
-        
+
 ]
 router.get("/", csrfProtection, asyncHandler(async (req, res) => {
     const cocktailqs = await CocktailQ.findAll({
-        
-            
-        order: {
-            ascending,
-            createdAt
-            },
+        // where: {
+        //     order: { ASCENDING, createdAt },
+        //     limit: 10
+        // }
+
+        order: [
+            ['createdAt',
+            'ASC']
+        ],
         limit: 10
-        
+
     });
     res.render("cocktail-q", { cocktailqs, csrfToken: req.csrfToken() });
 }))
@@ -77,7 +81,7 @@ router.post('/id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res,
     if (cocktailq) {
         await cocktailq.update({ question: req.body.question })
         res.redirect('/')
-        
+
     }
     else {
         next(cocktailQNotFoundError(req.params.id))

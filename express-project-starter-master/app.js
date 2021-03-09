@@ -41,7 +41,7 @@ store.sync();
 app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Cocktail-Qs', cocktailqRouter)
+app.use('/CocktailQs', cocktailqRouter)
 
 
 // catch 404 and forward to error handler
