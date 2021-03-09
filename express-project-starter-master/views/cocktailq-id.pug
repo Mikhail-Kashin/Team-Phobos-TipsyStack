@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+  div(class='question-and-answer-wrapper')
+    div(class='question-div')
+      p=cocktailq.question 
+      if(req.user.id === cocktailq.id)
+        button(class='delete') Delete
+        a(class='fakebtn', href='/CocktailQs/#{req.params.id}/edit') Edit
+    div(class='answers-wrapper') 
+      each cocktailA in cocktailq.CocktailAs
+        div(class='answer-div')
+          p=cocktailA.answer
+          if(req.user.id === cocktailA.userId)
+            button(class='delete') Delete
+            a(class='fakebtn', href='/CocktailQs/#{req.params.id}/CocktailAs/#{cocktailA.id}') Edit
+
