@@ -15,6 +15,7 @@ img{
   grid-column-end: 3;
   background-color: white;
   border: 1px solid darkgray;
+  border-top: 4px solid darkblue
 }
 
 .search-bar{
