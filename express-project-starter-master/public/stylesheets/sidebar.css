@@ -1,0 +1,51 @@
+.sidebar{
+  columns: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid darkgray; 
+  height: 100%;
+  margin: 10px;
+  position: sticky;
+}
+
+.home, 
+.users,
+.my-questions,
+.my-answers{
+  color: black;
+}
+
+.home{
+  text-decoration: none;
+}
+
+.home,
+.public,
+.personal{
+  font-size: medium;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.public-links-wrapper,
+.personal-links-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.my-questions,
+.my-answers,
+.users{
+  padding: 10px;
+  margin:20px;
+  margin-top: 0;
+}
+
+.my-questions{
+  margin-bottom: 0;
+}
+
+.link:hover{
+  color: darkblue;
+}
