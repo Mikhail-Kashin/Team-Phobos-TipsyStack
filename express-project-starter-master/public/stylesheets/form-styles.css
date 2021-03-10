@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 800px;
+
+}
+
+.inner-form-wrapper {
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.header{
+    margin-left: 550px;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.inner-form-wrapper, .label-div, .labels, .textarea-div, .form-btn {
+    background-color: white;
+}
+
+.labels {
+    margin-bottom: 10px;
+}
