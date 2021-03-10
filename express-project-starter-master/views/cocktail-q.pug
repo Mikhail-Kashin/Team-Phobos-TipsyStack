@@ -1,11 +1,19 @@
 extends layout
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/cocktail-q-display.css")
 
 block content
-  h2 Your CocktailQs
-  each cocktailq in cocktailqs
-    div(class='most recent questions')
-      a(href=`/CocktailQs/${cocktailq.id}`)= cocktailq.question
-  div
-    a(href='/CocktailQs/new')
-      button( type='submit' class='btn') Ask a new Cocktail-Q
+ div(class="cocktail_q_container")
+    div(class="header")
+        div(class="h2_container")
+            h2 Your Cocktail-Qs
+                div(class="container_btn")
+                    a(href='/CocktailQs/new')
+                        button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
+ div(class="container_questions")
+    each cocktailq in cocktailqs
+        div(class='most_recent_questions')
+            a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
+        
