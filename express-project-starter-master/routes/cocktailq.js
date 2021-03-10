@@ -28,7 +28,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
         // }
 
         order: [
-            ['createdAt',
+            ['updatedAt',
             'DESC']
         ],
         limit: 10
@@ -61,7 +61,8 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
 
 
 router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
-    res.render('cocktailq-edit-page', { csrfToken: req.csrfToken()})
+    const cocktailq = await CocktailQ.findByPk(req.params.id);
+    res.render('cocktailq-edit-page', { cocktailq, csrfToken: req.csrfToken()})
 }))
 
 
@@ -71,7 +72,7 @@ router.post('/:id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res
             id: req.params.id
         }
     })
-    if (req.user.id !== cocktailq.userId) {
+    if (res.locals.user.id !== cocktailq.userId) {
         const err = new Error('Access Denied 🚫')
         err.status = 401
         err.message = "You do no have sufficient access to edit this Cocktail-Q!"
@@ -80,7 +81,7 @@ router.post('/:id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res
     }
     if (cocktailq) {
         await cocktailq.update({ question: req.body.question })
-        res.redirect('/')
+        res.redirect(`/CocktailQs/${req.params.id}`)
 
     }
     else {

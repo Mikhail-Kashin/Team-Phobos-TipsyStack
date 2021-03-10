@@ -2,7 +2,8 @@ extends layout
 include form-creator
 block content
   +validationErrorSummary(errors)
-  form(method='post' action='/Cocktail-Q/#{cocktailA.cocktailQId}/Cocktail-A/#{cocktailA.id}')
+  form(method='post' action=`/CocktailQs/${cocktailA.cocktailQId}/CocktailAs/${cocktailA.id}`)
+    input(type='hidden' name='_csrf' value=csrfToken)
     label(for="answer") Cocktail-A
-    textarea(name="answer" value=cocktailA.answer)
-      button(class="btn" type="submit") Update
+    textarea(name="answer")
+    button(class="btn" type="submit") Update
