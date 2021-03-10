@@ -1,0 +1,47 @@
+.formDiv{
+  display: block;
+  text-align: center;
+  margin-top: 10%;
+
+}
+
+.form-label{
+  background-color:whitesmoke;
+  padding-right: 10px;
+}
+
+.form-data{
+  background-color:whitesmoke
+}
+
+.form-inputs{
+  background-color:whitesmoke
+}
+
+.login-form{
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  background-color:whitesmoke;
+  border: 1px solid black;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 5%);
+  padding: 24px;
+  text-align: center;
+  max-width: fit-content;
+}
+
+.wrapper-login{
+  background-color:whitesmoke;
+}
+
+.login-logo{
+  max-width:4%;
+  height:auto;
+}
+
+.someclassthaticanpullfrom{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
