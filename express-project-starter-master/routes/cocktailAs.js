@@ -42,7 +42,7 @@ cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(r
 
 cocktailARouter.get('/:id(\\d+)', csrfProtection, asyncHandler(async(req, res)=>{
   const id = req.params.id;
-  const cocktailA = CocktailA.findByPk(id);
+  const cocktailA = await CocktailA.findByPk(id);
 
   res.render('edit-answer', {cocktailA, csrfToken: req.csrfToken()});
 }))
@@ -50,7 +50,8 @@ cocktailARouter.get('/:id(\\d+)', csrfProtection, asyncHandler(async(req, res)=>
 cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandler( async(req, res) =>{
     const id = req.params.id;
     const cocktailA = await CocktailA.findByPk(id);
-    if(req.user.id !== cocktailA.userId) {
+    console.log(id, cocktailA);
+    if(res.locals.user.id !== cocktailA.userId) {
         const err = new Error("Unauthorized");
         err.status = 401;
         err.message = "You are not authorized to edit this Cocktail-A.";
@@ -63,8 +64,8 @@ cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandle
         const validatorErrors = validationResult(req);
         if(validatorErrors.isEmpty()) {
             //error handling
-            await CocktailA.update({answer})
-            res.redirect(`/Cocktail-Q/${cocktailQId}`)
+            await cocktailA.update({answer})
+            res.redirect(`/CocktailQs/${cocktailA.cocktailQId}`)
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
             res.render('edit-answer', {
