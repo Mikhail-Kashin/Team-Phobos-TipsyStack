@@ -1,37 +1,31 @@
 .container_questions{
-    /* align-content: center; */
     display:flex;
     flex-direction: column;
-    /* align-content: center; */
-    /* align-items: center; */
     justify-content: space-between;
-    /* justify-items: flex-start;
-    flex-wrap: wrap; */
     align-items: center;
     position: absolute;
-width: 1020px;
-
+    width: 1020px;
 }
 .cocktail_q{
     display: flex;
     justify-content: center;
-  color: black;
-  font-size: 20px;
-  text-decoration: none;
-  width: 30px;
-  border: 1px solid green;
-  padding: 20px;
-  margin: 10px;
-  position: relative;
-margin: 5px;
-box-sizing: border-box;
-float: left;
-width: 510px;
-height: 10px;
-overflow: hidden;
-text-align: center;
-align-self:center;
-
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    width: 30px;
+    border: 5px ridge #0095ff;
+    padding: 30px;
+    margin: 10px;
+    position: relative;
+    margin: 5px;
+    box-sizing: border-box;
+    float: left;
+    width: 510px;
+    height: 10px;
+    overflow: hidden;
+    text-align: center;
+    align-self:center;
+    align-items: center;
 }
 
 #ask_q_btn{
@@ -39,20 +33,16 @@ align-self:center;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    /* background-color: #538fbe; */
     padding: 10px 34px;
-    font-size: 20px;
-    /* border: 1px solid #2d6898; */
-    
+    font-size: 20px;  
 }
 
 /* .container_btn{
-    display: flex;
-    justify-content: flex-end;
+    
 } */
 
 /* .header{
-    display: flex;
+    
     
 } */
 
@@ -61,8 +51,3 @@ align-self:center;
     justify-content: space-between;
 }
 
-.most_recent_questions{
-    display: flex;
-    align-content: center;
-    
-}
