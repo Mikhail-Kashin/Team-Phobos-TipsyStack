@@ -1,0 +1,48 @@
+img{
+  height: 50px;
+  width: 120px;
+  grid-column: 1;
+  margin: 3px;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  height: 65px;
+  width: 100%;
+  grid-row: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: white;
+  border: 1px solid darkgray;
+}
+
+.search-bar{
+  grid-column: 2;
+  background-color: white;
+  margin: 5px;
+}
+
+.user-btn-div{
+  grid-column: 3;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+
+}
+
+.user-btn{
+  margin: 20px;
+}
+
+.user-btn-a{
+  background-color: white;
+}

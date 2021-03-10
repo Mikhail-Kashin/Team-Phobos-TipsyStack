@@ -1,0 +1,12 @@
+div(class='navbar')
+  a(href="/CocktailQs" class='logo') 
+    img(src="https://user-images.githubusercontent.com/75585372/110505456-2d805180-80cc-11eb-97ad-a1a1616a7030.png", alt="Tipsy Stack Logo")
+  input(type='text' class='search-bar' placeholder='Search...')
+  div(class='user-btn-div')
+    if(!user)
+      a(href="users/login" class='user-btn-a')
+        button(type="submit" class='user-btn') Login
+      a(href="users/signup" class='user-btn-a')  
+        button(type='submit' class='user-btn') Signup 
+    if(user)
+      button(type='submit' class='user-btn') Logout
