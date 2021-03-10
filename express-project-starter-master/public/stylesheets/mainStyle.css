@@ -4,7 +4,6 @@
 }
 
 .btn {
-  padding: 5px;
   margin: 10px;
   background-color: blue;
   color: white;
@@ -32,4 +31,24 @@ textarea{
   width: 75%;
   font-size: 14px;
   tab-size: 4;
+}
+
+.change-btn{
+  padding: 2px;
+  margin: 4px;
+  background-color: #D3D3D3;
+  border:hidden;
+  border-radius: 30px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.change-btn:hover{
+  border: solid, 1em;
+  background-color: lightsteelblue;
+}
+
+body,
+html{
+  height: 100%;
 }

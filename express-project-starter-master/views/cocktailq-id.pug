@@ -1,23 +1,38 @@
 extends layout
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/qAndADisplay.css")
+  link(rel="stylesheet" href="/stylesheets/sidebar.css")
+
 block content
-  div(class='question-and-answer-wrapper')
-    div(class='question-div')
-      p=cocktailq.question
-        if(user && user.id === cocktailq.userId)
-          button(class='btn') Delete
-          a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/edit`)
-            button(class='btn') Edit
-    div(class='answers-wrapper')
-      each cocktailA in cocktailq.CocktailAs
-        div(class='answer-div')
-          p=cocktailA.answer
+  div(class='q-and-a-page-wrapper')
+    include sidebar
+    div(class='question-and-answer-wrapper')
+      div(class='question-div')
+        div(class='specific-question-wrapper')
+          div(class='question-and-buttons')
+            p(class='specific-question')=cocktailq.question
+            if(user && user.id === cocktailq.userId)
+              div(class='edit-and-delete-btns')
+                button(class='change-btn') Delete
+                a(href=`/CocktailQs/${cocktailq.id}/edit`)
+                  button(class='change-btn') Edit
+          a(href=`/CocktailQs/new` class="btn-anchor")
+            button(class='btn') Post A Cocktail-Q
+      div(class='answers-wrapper')
+        each cocktailA in cocktailq.CocktailAs
+          div(class='answer-div')
+            p(class='answer-p')=cocktailA.answer
             if(user && user.id === cocktailA.userId)
-              button(class='btn') Delete
-              a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`) Edit
-    div
-      a(href='/CocktailQs')
-        button(class='btn') Back
-    div
-      a(href=`/CocktailQs/${cocktailq.id}/CocktailAs`)
-        button(class='btn') Add Cocktail-A
+              div(class='btn-div')
+                button(class='change-btn') Delete
+                a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
+                  button(class='change-btn', type='submit') Edit
+        div(class='back-and-post')
+          div(class='btn-div1')
+            a(href=`/CocktailQs/${cocktailq.id}/CocktailAs`)
+              button(class='btn') Post A Cocktail-A
+          div(class='btn-div1')
+            a(href='/CocktailQs')
+              button(class='btn') Back
