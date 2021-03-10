@@ -1,17 +1,23 @@
-extends layout 
+extends layout
 
-block content 
+block content
   div(class='question-and-answer-wrapper')
     div(class='question-div')
-      p=cocktailq.question 
-      if(req.user.id === cocktailq.id)
-        button(class='delete') Delete
-        a(class='fakebtn', href='/CocktailQs/#{req.params.id}/edit') Edit
-    div(class='answers-wrapper') 
+      p=cocktailq.question
+        if(user && user.id === cocktailq.userId)
+          button(class='delete') Delete
+          a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/edit`)
+            button() Edit
+    div(class='answers-wrapper')
       each cocktailA in cocktailq.CocktailAs
         div(class='answer-div')
           p=cocktailA.answer
-          if(req.user.id === cocktailA.userId)
-            button(class='delete') Delete
-            a(class='fakebtn', href='/CocktailQs/#{req.params.id}/CocktailAs/#{cocktailA.id}') Edit
-
+            if(user && user.id === cocktailA.userId)
+              button(class='delete') Delete
+              a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`) Edit
+    div
+      a(href='/CocktailQs')
+        button(class='back') Back
+    div
+      a(href=`/CocktailQs/${cocktailq.id}/CocktailAs`)
+        button() Add Cocktail-A

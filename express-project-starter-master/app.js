@@ -42,7 +42,7 @@ store.sync();
 app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Cocktail-Q/:qId/Cocktail-A', cocktailARouter);
+app.use('/CocktailQs/:qId/CocktailAs', cocktailARouter);
 app.use('/CocktailQs', cocktailqRouter)
 
 

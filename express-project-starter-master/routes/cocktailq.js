@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const { CocktailQ } = require('../db/models');
+const { CocktailQ, CocktailA } = require('../db/models');
 
 
 
@@ -46,28 +46,26 @@ router.post('/new', csrfProtection, cocktailQValidators, asyncHandler(async (req
         question,
     } = req.body
     await CocktailQ.create({question, userId: req.session.auth.userId})
-    req.session.save(() => {
         res.redirect('/CocktailQs')
-    })
 }));
 
-router.get('/id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    console.log(req.params.id)
     const cocktailq = await CocktailQ.findOne({
-        where: {
-            include: CocktailA,
-            id: req.params.id
-        }
+        where: { id: req.params.id },
+        include: CocktailA
     })
+    console.log(cocktailq)
     res.render('cocktailq-id', { cocktailq, csrfToken: req.csrfToken() })
 }));
 
 
-router.get('/id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
-    res.render('cocktailq-edit-page', { csrfToken: csrfToken()})
+router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
+    res.render('cocktailq-edit-page', { csrfToken: req.csrfToken()})
 }))
 
 
-router.post('/id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res, next) => {
+router.post('/:id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res, next) => {
     const cocktailq = await CocktailQ.findOne({
         where: {
             id: req.params.id
