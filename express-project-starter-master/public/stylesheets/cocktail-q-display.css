@@ -1,25 +1,37 @@
 .container_questions{
-    align-content: center;
-    display:flex;
-    flex-direction: row;
     /* align-content: center; */
-    align-items: center;
+    display:flex;
+    flex-direction: column;
+    /* align-content: center; */
+    /* align-items: center; */
     justify-content: space-between;
-    justify-items: flex-start;
-    flex-wrap: wrap;
+    /* justify-items: flex-start;
+    flex-wrap: wrap; */
+    align-items: center;
+    position: absolute;
+width: 1020px;
 
 }
 .cocktail_q{
+    display: flex;
+    justify-content: center;
   color: black;
   font-size: 20px;
-  box-sizing: content-box;
   text-decoration: none;
-    
-}
+  width: 30px;
+  border: 1px solid green;
+  padding: 20px;
+  margin: 10px;
+  position: relative;
+margin: 5px;
+box-sizing: border-box;
+float: left;
+width: 510px;
+height: 10px;
+overflow: hidden;
+text-align: center;
+align-self:center;
 
-.container_btn{
-    display: flex;
-    justify-content: flex-end;
 }
 
 #ask_q_btn{
@@ -34,12 +46,23 @@
     
 }
 
-.header{
+/* .container_btn{
+    display: flex;
+    justify-content: flex-end;
+} */
+
+/* .header{
     display: flex;
     
-}
+} */
 
 .h2_container{
     display: flex;
-    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.most_recent_questions{
+    display: flex;
+    align-content: center;
+    
 }
