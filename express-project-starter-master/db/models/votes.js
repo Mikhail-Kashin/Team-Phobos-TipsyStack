@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Votes = sequelize.define('Votes', {
+  const Vote = sequelize.define('Vote', {
     voteDirection: DataTypes.BOOLEAN,
     userId: DataTypes.INTEGER,
     cocktailAId: DataTypes.INTEGER
   }, {});
-  Votes.associate = function(models) {
+  Vote.associate = function(models) {
     // associations can be defined here
-    // Votes.belongsTo(model.User, {foreignKey: 'userId'});
-    // Votes.belongsTo(model.CocktailA, {foreignKey: 'cocktailAId'});
+    Vote.belongsTo(models.User, {foreignKey: 'userId'});
+    Vote.belongsTo(models.CocktailA, {foreignKey: 'cocktailAId'});
   };
-  return Votes;
+  return Vote;
 };

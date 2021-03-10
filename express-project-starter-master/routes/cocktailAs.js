@@ -1,5 +1,5 @@
 const express = require('express');
-const cocktailARouter = express.Router();
+const cocktailARouter = express.Router({mergeParams: true});
 const { asyncHandler, csrfProtection } = require('./utils');
 const { CocktailA } = require('../db/models');
 const { check, validationResult } = require('express-validator');
@@ -15,6 +15,7 @@ const answerValidators = [
 
 cocktailARouter.get('/', csrfProtection, asyncHandler(async(req, res)=>{
     const qId = req.params.qId
+    console.log(req.params)
     res.render('answer', {qId, csrfToken: req.csrfToken()});
 }));
 
@@ -26,8 +27,8 @@ cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(r
     const validatorErrors = validationResult(req);
 
     if(validatorErrors.isEmpty()){
-         const cocktailA = await CocktailA.create({ cocktailQId: req.params.qId, answer, userId: req.user.id})
-        res.redirect(`/Cocktail-Q/${cocktailQId}`);
+         const cocktailA = await CocktailA.create({ cocktailQId: req.params.qId, answer, userId: res.locals.user.id})
+        res.redirect(`/CocktailQs/${cocktailA.cocktailQId}`);
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('answer', {
@@ -36,7 +37,6 @@ cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(r
             errors
         });
     }
-
 
 }));
 
