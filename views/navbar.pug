@@ -4,9 +4,9 @@ div(class='navbar')
   input(type='text' class='search-bar' placeholder='Search...')
   div(class='user-btn-div')
     if(!user)
-      a(href="users/login" class='user-btn-a')
+      a(href="/users/login" class='user-btn-a')
         button(type="submit" class='user-btn') Login
-      a(href="users/signup" class='user-btn-a')  
+      a(href="/users/signup" class='user-btn-a')  
         button(type='submit' class='user-btn') Signup 
     if(user)
       button(type='submit' class='user-btn') Logout
