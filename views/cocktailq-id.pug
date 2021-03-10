@@ -4,9 +4,11 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/qAndADisplay.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 
 block content
   div(class='q-and-a-page-wrapper')
+    include navbar
     include sidebar
     div(class='question-and-answer-wrapper')
       div(class='question-div')

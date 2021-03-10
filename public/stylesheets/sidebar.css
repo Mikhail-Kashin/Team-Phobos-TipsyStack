@@ -1,5 +1,6 @@
 .sidebar{
-  columns: 1;
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -7,6 +8,8 @@
   height: 100%;
   margin: 10px;
   position: sticky;
+  background-color: white;
+  padding: 10px;
 }
 
 .home, 
@@ -14,6 +17,7 @@
 .my-questions,
 .my-answers{
   color: black;
+  background-color: white;
 }
 
 .home{
@@ -26,12 +30,14 @@
   font-size: medium;
   font-weight: bold;
   margin-top: 30px;
+  background-color: white;
 }
 
 .public-links-wrapper,
 .personal-links-wrapper{
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .my-questions,
@@ -48,4 +54,9 @@
 
 .link:hover{
   color: darkblue;
+}
+
+.public-wrapper,
+.personal-wrapper{
+  background-color: white;
 }
