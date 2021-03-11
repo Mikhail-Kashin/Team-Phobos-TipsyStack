@@ -1,6 +1,6 @@
 mixin formCreator(fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null)
   div(class='form-inputs')
-    label(for=fieldName)= labelText
+    label(for=fieldName, class='form-label')= labelText
     input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-data')
 
 mixin validationErrorSummary(errors)

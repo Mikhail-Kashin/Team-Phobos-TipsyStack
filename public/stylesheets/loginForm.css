@@ -1,0 +1,41 @@
+.formDiv{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  align-items: center;
+
+}
+
+.form-label{
+  background-color:white;
+  padding-right: 10px;
+}
+
+.form-data{
+  background-color:white
+}
+
+.form-inputs{
+  background-color:white
+}
+
+.login-form{
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  background-color:white;
+  border: 1px solid black;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 5%);
+  padding: 24px;
+  text-align: center;
+  max-width: fit-content;
+}
+
+.wrapper-login{
+  background-color:white;
+}
+
+.login-logo{
+  max-width: 5%;
+  height:auto;
+}
