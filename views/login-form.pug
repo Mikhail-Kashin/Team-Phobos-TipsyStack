@@ -1,13 +1,18 @@
 extends layout
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/loginForm.css")
 include form-creator
 block content
   +validationErrorSummary(errors)
-  form(action='/users/login', method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +formCreator('email', 'Email Address', '', 'email', 'Enter Email')
-    +formCreator('password', 'Password', '', 'password', 'Enter Password')
-    div
-      button(type='submit' class='btn') Log in
-  form(action='/users/demo', method='post')
-    div
-      button(type='submit' class='btn') Demo Log in
+
+  div(class='formDiv')
+    form(action='/users/login', method='post', class='login-form')
+      img(src="https://user-images.githubusercontent.com/75585372/110696295-e6bc5580-81b8-11eb-85c9-fa60ffc936cb.png", class="login-logo")
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +formCreator('email', 'Email Address', '', 'email', 'Enter Email')
+      +formCreator('password', 'Password', '', 'password', 'Enter Password')
+      div(class='wrapper-login')
+        button(type='submit' class='btn') Log in
+      form(action='/users/demo', method='post', )
+          button(type='submit' class='btn') Demo Log in
