@@ -3,9 +3,14 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  div(class="splashWrapper")
+    include navbar
+    div(class="splashDiv")
+        div(class='splashLogo')
+          div(class='splashText') Welcome to the Tipsy<span class="stackBoldme">Stack!</span> <a href=/CocktailQs class="aTagquestions"> <span class="MostRecent">See the most recent questions!</span> </a>
+          div(class='splashMoreText') We Love People Who Drink! <span class="italicMe">(*Responsibly)</span>
