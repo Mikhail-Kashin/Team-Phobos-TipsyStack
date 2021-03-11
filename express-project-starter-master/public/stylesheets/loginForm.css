@@ -1,28 +1,29 @@
 .formDiv{
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   margin-top: 10%;
+  align-items: center;
 
 }
 
 .form-label{
-  background-color:whitesmoke;
+  background-color:white;
   padding-right: 10px;
 }
 
 .form-data{
-  background-color:whitesmoke
+  background-color:white
 }
 
 .form-inputs{
-  background-color:whitesmoke
+  background-color:white
 }
 
 .login-form{
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  background-color:whitesmoke;
+  background-color:white;
   border: 1px solid black;
   box-shadow: 0 10px 25px rgb(0 0 0 / 5%);
   padding: 24px;
@@ -31,17 +32,10 @@
 }
 
 .wrapper-login{
-  background-color:whitesmoke;
+  background-color:white;
 }
 
 .login-logo{
-  max-width:4%;
+  max-width: 5%;
   height:auto;
-}
-
-.someclassthaticanpullfrom{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
 }
