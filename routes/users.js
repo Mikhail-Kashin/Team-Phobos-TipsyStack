@@ -38,7 +38,7 @@ const registrationValidators = [
     .isEmail()
     .withMessage('Email Address is not a valid email')
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } })
+      return User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
             return Promise.reject('This Email Address is already being used');

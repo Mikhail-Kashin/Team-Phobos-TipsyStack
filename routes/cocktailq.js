@@ -3,6 +3,7 @@ const router = express.Router();
 const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const { CocktailQ, CocktailA , User, Vote } = require('../db/models');
+const { requireAuth } = require('../auth');
 
 const cocktailQValidators = [
 
@@ -24,7 +25,7 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
     });
     res.render("cocktail-q", { cocktailqs, csrfToken: req.csrfToken() });
 }))
-router.get('/new', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
     res.render('cocktailq-question', {csrfToken: req.csrfToken()})
 }))
 
@@ -59,7 +60,7 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 
-router.get('/:id(\\d+)/edit', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)/edit', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
     const cocktailq = await CocktailQ.findByPk(req.params.id);
     res.render('cocktailq-edit-page', { cocktailq, csrfToken: req.csrfToken()})
 }))

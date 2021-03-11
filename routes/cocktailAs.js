@@ -3,6 +3,7 @@ const cocktailARouter = express.Router({mergeParams: true});
 const { CocktailA, Vote } = require('../db/models');
 const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require('./utils');
 const { check, validationResult } = require('express-validator');
+const { requireAuth } = require('../auth');
 
 const answerValidators = [
     check('answer')
@@ -13,7 +14,7 @@ const answerValidators = [
 
 //need to update forms with csrf
 
-cocktailARouter.get('/', csrfProtection, asyncHandler(async(req, res)=>{
+cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
     const qId = req.params.qId
     // console.log(req.params)
     res.render('answer', {qId, csrfToken: req.csrfToken()});

@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-top: 10%;
   align-items: center;
-  grid-row:
+  grid-row: 2;
 }
 
 .loginPageWrapper{
