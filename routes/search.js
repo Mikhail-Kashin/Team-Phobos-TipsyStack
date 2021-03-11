@@ -11,7 +11,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 const { CocktailQ, CocktailA, User, Vote } = require('../db/models');
 
-router.get('/search-reasult', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     const questions = await CocktailQ.findAll({
         include: [User, CocktailA, Vote]
     })
@@ -24,11 +24,14 @@ router.get('/search-reasult', csrfProtection, asyncHandler(async (req, res) => {
 router.post('/', csrfProtection, asyncHandler(async (req, res) => {
     const { query } = req.body;
     const questions = await CocktailQ.findAll({
+        include: User,
         where: {
-            content: {
+            question: {
                 [Op.substring] : `%${query}%`
-            }
-        }
+            }, 
+        },
+
+        
     })
 
     res.render('search', {
@@ -36,3 +39,5 @@ router.post('/', csrfProtection, asyncHandler(async (req, res) => {
         csrfToken: req.csrfToken()
     })
 }))
+
+module.exports = router;

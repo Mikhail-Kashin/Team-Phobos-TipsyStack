@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const cocktailqRouter = require('./routes/cocktailq')
 const { restoreUser } = require('./auth');
 const cocktailARouter = require('./routes/cocktailAs');
+const searchRouter = require('./routes/search')
 
 const app = express();
 
@@ -44,7 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/CocktailQs/:qId/CocktailAs', cocktailARouter);
 app.use('/CocktailQs', cocktailqRouter)
-
+app.use('/CocktailQs/search-result', searchRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

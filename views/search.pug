@@ -11,7 +11,7 @@ block content
     div(class="cocktail_q_container")
         div(class="header")
             div(class="h2_container")
-                h2 Your Cocktail-Qs
+                h2 Your Searched Result: Cocktail-Qs
                 div(class="container_btn")
                     a(href='/CocktailQs/new')
                         button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
@@ -20,7 +20,4 @@ block content
                 div(class='most_recent_questions')
                     a(href=`/CocktailQs/${question.id}` class='cocktail_q')= question.question
                     p(class="created_by") Created by user: #{question.User.userName}
-                    p(class='created-at') Posted: #{queston.createdAt}
-        div(class="btn_show_all")
-            a(href='/CocktailQs/all')
-                button(type='submit' class='btn' id='btn_show_all') Show All
+                    p(class='created-at') Posted: #{question.createdAt}
