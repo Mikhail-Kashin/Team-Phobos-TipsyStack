@@ -1,13 +1,23 @@
 extends layout
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/signUp-Form.css")
+  link(rel="stylesheet" href="/stylesheets/sidebar.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 include form-creator
 block content
   +validationErrorSummary(errors)
-  form(action='/users/signup', method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +formCreator('userName', 'User Name', user.userName, 'text', 'Enter User Name')
-    +formCreator('email', 'Email Address',user.email, 'email', 'Enter Email')
-    +formCreator('password', 'Password', user.password, 'password', 'Enter Password')
-    +formCreator('confirmPassword', 'Confirm Password', '', 'password', 'Confirm Your Password')
-    div
-      button(type='submit' class='btn') Sign up
-//- fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null
+  div(class='signUpPageWrapper')
+    include navbar
+    include sidebar
+    div(class='signUpDiv')
+      form(action='/users/signup', method='post', class='signup-form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        img(src="https://user-images.githubusercontent.com/75585372/110696295-e6bc5580-81b8-11eb-85c9-fa60ffc936cb.png", class="signup-logo")
+        +formCreator('userName', 'User Name:', user.userName, 'text', 'Enter User Name')
+        +formCreator('email', 'Email Address:',user.email, 'email', 'Enter Email')
+        +formCreator('password', 'Password:', user.password, 'password', 'Enter Password')
+        +formCreator('confirmPassword', 'Confirm Password:', '', 'password', 'Confirm Your Password')
+        div(class='signup-wrap')
+          button(type='submit' class='btn') Sign up
+  //- fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null
