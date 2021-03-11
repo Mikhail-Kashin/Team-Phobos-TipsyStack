@@ -17,7 +17,9 @@ block content
             p(class='specific-question')=cocktailq.question
             if(user && user.id === cocktailq.userId)
               div(class='edit-and-delete-btns')
-                button(class='change-btn') Delete
+                form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/delete`)
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  button(class='change-btn' type='submit') Delete
                 a(href=`/CocktailQs/${cocktailq.id}/edit`)
                   button(class='change-btn') Edit
           a(href=`/CocktailQs/new` class="btn-anchor")
@@ -30,7 +32,9 @@ block content
               p(class='created-at') Posted: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
               div(class='btn-div')
-                button(class='change-btn') Delete
+                form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}/delete`)
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  button(class='change-btn', type='submit') Delete
                 a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
                   button(class='change-btn', type='submit') Edit
         div(class='back-and-post')

@@ -1,18 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { asyncHandler, csrfProtection } = require("./utils");
+const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const { CocktailQ, CocktailA } = require('../db/models');
 
-
-
-const cocktailQNotFoundError = (id) => {
-  const err = Error("Cocktail-Q not found");
-  err.errors = [`Cocktail-Q with id of ${id} could not be found.`];
-  err.title = "Cocktail-Q not found.";
-  err.status = 404;
-  return err;
-};
 const cocktailQValidators = [
 
     check('question')
@@ -89,26 +80,32 @@ router.post('/:id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res
     }
 }))
 
-// router.delete('/id(\\d+)', asyncHandler(async (req, res, next) => {
-//     const cocktailq = await CocktailQ.findOne({
-//         where: {
-//           id: req.params.id
-//       }
-//     })
-//      if (req.user.id !== cocktailq.userId) {
-//        const err = new Error("Access Denied 🚫");
-//        err.status = 401;
-//        err.message =
-//          "You do no have sufficient access to edit this Cocktail-Q!";
-//        err.title = "Access Denied 🚫";
-//        throw err;
-//      }
-//     if (cocktailq) {
-//         await cocktailq.destroy();
-//         res.render({message: `Deleted Cocktail-Q with id of ${req.params.id}.`})
-//     } else {
-//         next(cocktailQNotFoundError(req.params.id))
-//     }
-// }))
+router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res, next) => {
+    const cocktailq = await CocktailQ.findOne({
+        where: {
+          id: req.params.id
+      }
+    })
+     if (res.locals.user.id !== cocktailq.userId) {
+       const err = new Error("Access Denied 🚫");
+       err.status = 401;
+       err.message =
+         "You do no have sufficient access to edit this Cocktail-Q!";
+       err.title = "Access Denied 🚫";
+       throw err;
+     }
+    if (cocktailq) {
+        await CocktailA.destroy({
+            where: {
+                cocktailQId: req.params.id
+            }
+        })
+        await cocktailq.destroy();
+        res.redirect(`/CocktailQs`)
+        // res.render({message: `Deleted Cocktail-Q with id of ${req.params.id}.`})
+    } else {
+        next(cocktailQNotFoundError(req.params.id))
+    }
+}))
 
 module.exports = router;
