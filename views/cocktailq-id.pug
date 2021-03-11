@@ -22,12 +22,12 @@ block content
                   button(class='change-btn') Edit
           a(href=`/CocktailQs/new` class="btn-anchor")
             button(class='btn') Post A Cocktail-Q
-      div(class='answers-wrapper')
+      div(class='answers-wrapper') 
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
             div(class='created-at-wrapper')
-              p(class='created-at') Posted: #{cocktailA.createdAt}
+              p(class='created-at') Posted At: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
               div(class='btn-div')
                 button(class='change-btn') Delete

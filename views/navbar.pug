@@ -9,4 +9,5 @@ div(class='navbar')
       a(href="/users/signup" class='user-btn-a')  
         button(type='submit' class='user-btn') Signup 
     if(user)
-      button(type='submit' class='user-btn') Logout
+      form(action="/users/logout" method='post' class='user-btn-a') 
+        button(type='submit' class='user-btn') Logout
