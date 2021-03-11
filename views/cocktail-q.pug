@@ -3,17 +3,21 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/cocktail-q-display.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 
 block content
- div(class="cocktail_q_container")
-    div(class="header")
-        div(class="h2_container")
-            h2 Your Cocktail-Qs
-            div(class="container_btn")
-                a(href='/CocktailQs/new')
-                    button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
- div(class="container_questions")
-    each cocktailq in cocktailqs
-        div(class='most_recent_questions')
-            a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
-        
+ div(class="cocktail_q_wrapper")
+    include navbar
+    div(class="cocktail_q_container")
+        div(class="header")
+            div(class="h2_container")
+                h2 Your Cocktail-Qs
+                div(class="container_btn")
+                    a(href='/CocktailQs/new')
+                        button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
+        div(class="container_questions")
+            each cocktailq in cocktailqs
+                div(class='most_recent_questions')
+                    a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
+                    p(class="created_by") Created by user: #{cocktailq.User.userName}
+                    p(class='created-at') Posted: #{cocktailq.createdAt}
