@@ -2,20 +2,23 @@ extends layout
 include form-creator
 append head
   link(rel='stylesheet' href='/stylesheets/form-styles.css')
+  link(rel='stylesheet' href='/stylesheets/navbar.css')
 block content
-  +validationErrorSummary(errors)
-  div(class='form-wrapper')
-    div(class='header')
-      h1 Ask a Cocktail-Q
-      form(action='/CocktailQs/new' method='post' class='form')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div(class='inner-form-wrapper')
-          div(class='label-div')
-            label(for='question' class='labels') Cocktail-Q Body:
-          div(class='textarea-div')
-            textarea(name="question", cols=92, rows=15, placeholder='Please Enter Cocktail-Q Here...')
-        div(class='form-btn')
-          button(type='submit' class='btn') Post Cocktail-Q
+  div(class='answerpg-wrapper')
+    include navbar
+    +validationErrorSummary(errors)
+    div(class='form-wrapper')
+      div(class='header')
+        h1 Ask a Cocktail-Q
+        form(action='/CocktailQs/new' method='post' class='form')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          div(class='inner-form-wrapper')
+            div(class='label-div')
+              label(for='question' class='labels') Cocktail-Q Body:
+            div(class='textarea-div')
+              textarea(name="question", cols=92, rows=15, placeholder='Please Enter Cocktail-Q Here...')
+          div(class='form-btn')
+            button(type='submit' class='btn') Post Cocktail-Q
 
 
 //- fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null
