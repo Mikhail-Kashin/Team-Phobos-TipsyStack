@@ -1,9 +1,18 @@
 extends layout
 include form-creator
+append head
+  link(rel='stylesheet' href='/stylesheets/form-styles.css')
 block content
   +validationErrorSummary(errors)
-  form(method='post' action=`/CocktailQs/${cocktailA.cocktailQId}/CocktailAs/${cocktailA.id}`)
-    input(type='hidden' name='_csrf' value=csrfToken)
-    label(for="answer") Cocktail-A
-    textarea(name="answer", cols=92, rows=15)
-    button(class="btn" type="submit") Update
+  div(class='form-wrapper')
+    div(class='header')
+      h1 Update your answer
+      form(method='post' action=`/CocktailQs/${cocktailA.cocktailQId}/CocktailAs/${cocktailA.id}` class='form')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(class='inner-form-wrapper')
+          div(class='label-div')
+            label(for="answer" class='labels') Cocktail-A Body:
+          div(class='textarea-div')
+            textarea(name="answer", cols=92, rows=15)
+        div(class='form-btn')
+          button(class="btn" type="submit") Update
