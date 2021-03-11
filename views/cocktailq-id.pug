@@ -34,7 +34,7 @@ block content
                 img(src="", alt="Upvote" class='upvote' id=`${cocktailA.id}/upvote`)
                 img(src="", alt="Downvote" class='downvote' id=`${cocktailA.id}/downvote`)
               div(class='vote-display')
-                div(id=`vote-${cocktailA.id}`)  0
+                div(id=`vote-${cocktailA.id}`)=votes[cocktailA.id]
             div(class='created-at-wrapper')
               p(class='created-at') Posted At: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
