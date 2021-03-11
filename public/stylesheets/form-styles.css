@@ -18,6 +18,7 @@
 .form-wrapper {
     display: flex;
     justify-content: center;
+    grid-row: 2;
 }
 
 .inner-form-wrapper, .label-div, .labels, .textarea-div {
@@ -32,4 +33,9 @@
 .btn {
     margin-left: 0;
     margin-top: 35px;
+}
+
+.answerpg-wrapper {
+    display: grid;
+    grid-template-rows: 80px 1fr;
 }
