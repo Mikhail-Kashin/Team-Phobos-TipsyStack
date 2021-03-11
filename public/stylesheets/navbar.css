@@ -44,6 +44,9 @@ img{
 
 .user-btn{
   margin: 20px;
+  background-color: darkblue;
+  color: white;
+  border-radius: 5px;
 }
 
 .user-btn-a{

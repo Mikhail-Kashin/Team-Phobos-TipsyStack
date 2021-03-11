@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const { CocktailQ, CocktailA } = require('../db/models');
+const { CocktailQ, CocktailA , User } = require('../db/models');
 
 const cocktailQValidators = [
 
@@ -13,10 +13,7 @@ const cocktailQValidators = [
 ]
 router.get("/", csrfProtection, asyncHandler(async (req, res) => {
     const cocktailqs = await CocktailQ.findAll({
-        // where: {
-        //     order: { ASCENDING, createdAt },
-        //     limit: 10
-        // }
+       include: User,
 
         order: [
             ['updatedAt',

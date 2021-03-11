@@ -3,22 +3,22 @@
     flex-direction: column;
     justify-content:center;
     align-content: center;
-    position: absolute;
-    flex-flow: wrap;
+    /* flex-flow: wrap;
+     */
     
 }
 .cocktail_q{
+    font-weight:bolder;
     display: flex;
     justify-content: center;
-    color: black;
+    color: midnightblue;
     font-size: 20px;
     text-decoration: none;
     width: 30px;
-    border: 5px ridge #0095ff;
+    border: 3px ridge #0095ff;
     border-radius: 3px;
     padding: 30px;
     margin: 10px;
-    position: relative;
     margin: 5px;
     box-sizing: border-box;
     float: left;
@@ -26,8 +26,18 @@
     height: 10px;
     overflow: hidden;
     text-align: center;
-    align-self:center;
     align-items: center;
+    background-image: url('../images/logo.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-blend-mode:soft-light;
+}
+
+
+.cocktail_q:hover{
+    background-blend-mode:luminosity;
+    color:purple;
 }
 
 #ask_q_btn{
@@ -40,17 +50,64 @@
     border-radius: 3px;
 }
 
-/* .container_btn{
-    
-} */
+.cocktail_q_container{
+display: grid;
+grid-row: 2;
+justify-content: center;
+justify-self: center;
+ 
+}
+ .created-at{
+    /* font-weight: bolder; */
+    display: flex;
+    justify-content: center;
+    color: midnightblue;
+    font-size: 12px;
+    /* width: 30px; */
+    /* border: 5px ridge #0095ff; */
+    border-radius: 3px;
+    /* padding: 30px; */
+    margin: 10px;
+    /* margin: 5px; */
+    /* box-sizing: border-box; */
+    overflow: hidden;
+    /* text-align: center; */
+    /* align-self: center; */
+    /* align-items: center; */
+}  
 
-/* .header{
-    
-    
-} */
+ 
 
 .h2_container{
     display: flex;
     justify-content: space-between;
 }
 
+.cocktail_q_wrapper {
+    display: grid;
+    grid-template-rows: 80px 1fr; 
+   
+}
+
+.most_recent_questions{
+    display: flex;
+    /* width: 500px; */
+    /* height: 500px; */
+    border: 4px ridge #0095ff;
+    /* background-color: black; */
+    flex-flow: column;
+    margin: 20px;
+    border-radius: 3px;
+}
+
+.created_by {
+    display: flex;
+    justify-content: center;
+    color: midnightblue;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+h2 {
+    color: midnightblue;
+}
