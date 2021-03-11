@@ -1,10 +1,11 @@
 .container_questions{
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content:center;
+    align-content: center;
     position: absolute;
-    width: 1020px;
+    flex-flow: wrap;
+    
 }
 .cocktail_q{
     display: flex;
