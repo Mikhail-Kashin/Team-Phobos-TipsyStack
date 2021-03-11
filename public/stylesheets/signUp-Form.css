@@ -3,6 +3,12 @@
   flex-direction: column;
   margin-top: 10%;
   align-items: center;
+  grid-row: 2;
+}
+
+.signUpPageWrapper{
+  display: grid;
+  grid-template-rows: 80px 1fr;
 }
 
 .form-label{
