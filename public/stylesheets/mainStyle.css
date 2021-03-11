@@ -5,7 +5,7 @@
 
 .btn {
   margin: 10px;
-  background-color: blue;
+  background-color: #0095ff;
   color: white;
   /* border: hidden; */
   border: 1px solid black;
@@ -33,7 +33,7 @@ textarea{
   background-color: white;
   border-radius: 3px;
 }
-}
+
 
 .change-btn{
   padding: 2px;
