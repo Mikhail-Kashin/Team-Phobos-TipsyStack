@@ -42,8 +42,8 @@
 
 .back-and-post{
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
 }
 
 .btn-div1{
