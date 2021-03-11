@@ -3,8 +3,11 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/cocktail-q-display.css")
+  link(rel="stylesheet" href="/stylesheets/navbar.css")
 
 block content
+ div(class="")
+ include navbar
  div(class="cocktail_q_container")
     div(class="header")
         div(class="h2_container")
