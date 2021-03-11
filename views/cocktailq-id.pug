@@ -26,6 +26,8 @@ block content
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
+            div(class='created-at-wrapper')
+              p(class='created-at') Posted: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
               div(class='btn-div')
                 button(class='change-btn') Delete

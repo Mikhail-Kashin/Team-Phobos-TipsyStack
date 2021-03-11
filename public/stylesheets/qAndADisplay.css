@@ -35,6 +35,9 @@
   display: block;
   font-size: large;
   margin-bottom: 0%;
+  border-bottom: 1px dashed darkblue;
+  padding: 5px;
+  background-color: #E8E8E8;
 }
 
 .back-and-post{
@@ -56,3 +59,32 @@
   align-self: center;
 }
 
+.answer-div{
+  border: 1px dashed darkblue;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #E8E8E8;
+}
+
+.created-at{
+  font-size: 11px;
+  text-align: center;
+  border-bottom: 1px dashed darkblue;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2px;
+  background-color: #E8E8E8;
+}
+
+.created-at-wrapper{
+  background-color: #E8E8E8;
+}
+
+.btn-div{
+  background-color: #E8E8E8;
+}
+
+.fakebtn{
+  background-color: #E8E8E8;
+}
