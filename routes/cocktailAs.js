@@ -1,8 +1,9 @@
 const express = require('express');
 const cocktailARouter = express.Router({mergeParams: true});
-const { asyncHandler, csrfProtection } = require('./utils');
+const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require('./utils');
 const { CocktailA } = require('../db/models');
 const { check, validationResult } = require('express-validator');
+const { requireAuth } = require('../auth');
 
 const answerValidators = [
     check('answer')
@@ -13,9 +14,9 @@ const answerValidators = [
 
 //need to update forms with csrf
 
-cocktailARouter.get('/', csrfProtection, asyncHandler(async(req, res)=>{
+cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
     const qId = req.params.qId
-    console.log(req.params)
+    // console.log(req.params)
     res.render('answer', {qId, csrfToken: req.csrfToken()});
 }));
 
@@ -50,7 +51,7 @@ cocktailARouter.get('/:id(\\d+)', csrfProtection, asyncHandler(async(req, res)=>
 cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandler( async(req, res) =>{
     const id = req.params.id;
     const cocktailA = await CocktailA.findByPk(id);
-    console.log(id, cocktailA);
+    // console.log(id, cocktailA);
     if(res.locals.user.id !== cocktailA.userId) {
         const err = new Error("Unauthorized");
         err.status = 401;
@@ -77,32 +78,31 @@ cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandle
 
     } else {
         //next(e) error handling if no cocktailA at primary id
-        res.render('edit-answer', {
-            cocktailA,
-            csrfToken: req.csrfToken(),
-            errors: ['No Cockatail-A found']
-        });
+        next(cocktailQNotFoundError(req.params.id))
     }
 }));
 
-// apiCocktailARouter.delete('/:id(\\d+)', asyncHandler(async(req, res) =>{
-//     const id = req.params.id;
-//     const cocktailA = await CocktailA.findByPk(id);
-//     if(req.user.id !== cocktailA.userId) {
-//         const err = new Error("Unauthorized");
-//         err.status = 401;
-//         err.message = "You are not authorized to delete this Cocktail-A.";
-//         err.title = "Unauthorized";
-//         throw err;
-//     }
+cocktailARouter.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) =>{
+    const id = req.params.id;
 
-//     if(cocktailA){
-//         await cocktailA.destroy()
-//         res.redirect('/Cocktail-Q/:id')
-//     } else {
-//         //next(e) error handling if no cocktailA at primary id
-//     }
+    const cocktailA = await CocktailA.findByPk(id);
+    // console.log(id, cocktailA);
+    if(res.locals.user.id !== cocktailA.userId) {
+        const err = new Error("Unauthorized");
+        err.status = 401;
+        err.message = "You are not authorized to delete this Cocktail-A.";
+        err.title = "Unauthorized";
+        throw err;
+    }
 
-// }));
+    if(cocktailA){
+        await cocktailA.destroy()
+        res.redirect(`/CocktailQs/${req.params.qId}`)
+    } else {
+        //next(e) error handling if no cocktailA at primary id
+        next(cocktailQNotFoundError(req.params.id))
+    }
+
+}));
 
 module.exports = cocktailARouter;
