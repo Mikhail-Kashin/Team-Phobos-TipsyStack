@@ -5,16 +5,14 @@
 
 .btn {
   margin: 10px;
-  background-color: blue;
+  background-color: #0095ff;
   color: white;
   /* border: hidden; */
-  padding: 1em;
-  border: 1px solid transparent;
+  border: 1px solid black;
   border-radius: 3px;
-  outline: none;
-  font-size: 13px;
-  line-height: 1.15384615;
+  font-size: 12px;
   text-align: center;
+  padding: 5px;
 }
 .btn:hover{
   background-color: darkblue;
@@ -25,13 +23,17 @@
 
 textarea{
   padding: 10px;
-  margin: -1px 0 0;
+  margin-top: 5px;
+  /* margin: -1px 0 0; */
   height: 200px;
   line-height: 1.3;
-  width: 75%;
+  width: 97%;
   font-size: 14px;
   tab-size: 4;
+  background-color: white;
+  border-radius: 3px;
 }
+
 
 .change-btn{
   padding: 2px;
