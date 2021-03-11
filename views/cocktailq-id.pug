@@ -5,6 +5,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/qAndADisplay.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
   link(rel="stylesheet" href="/stylesheets/navbar.css")
+  script(src="/javascripts/voteEvents.js" type="module" defer)
 
 block content
   div(class='q-and-a-page-wrapper')
@@ -28,6 +29,12 @@ block content
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
+            div(class='votes-wrapper')
+              div(class='up-and-down')
+                img(src="", alt="Upvote" class='upvote' id=`${cocktailA.id}/upvote`)
+                img(src="", alt="Downvote" class='downvote' id=`${cocktailA.id}/downvote`)
+              div(class='vote-display')
+                div(id=`vote-${cocktailA.id}`)  0
             div(class='created-at-wrapper')
               p(class='created-at') Posted At: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
