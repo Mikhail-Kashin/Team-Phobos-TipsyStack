@@ -1,7 +1,7 @@
 const express = require('express');
 const cocktailARouter = express.Router({mergeParams: true});
 const { asyncHandler, csrfProtection } = require('./utils');
-const { CocktailA } = require('../db/models');
+const { CocktailA, Vote } = require('../db/models');
 const { check, validationResult } = require('express-validator');
 
 const answerValidators = [
@@ -104,5 +104,55 @@ cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandle
 //     }
 
 // }));
+
+
+
+cocktailARouter.patch('/:id(\\d+)/upvote', asyncHandler, async(req, res) => {
+    const vote = await Vote.findOne({where: {
+        cocktailAId: req.params.id,
+        userId: res.locals.user.id
+    }})
+    if (!vote) {
+        Vote.create({cocktailAId: req.params.id, userId: res.locals.user.id, direction: true});
+    } else if (vote && vote.direction === false){
+        await vote.update({direction: true});
+    }
+    const votes = await Vote.findAll({where: {cocktailAId: req.params.id}})
+    let voteCount = 0;
+    votes.forEach(vote =>{
+        if(vote.direction) voteCount++;
+        else voteCount--;
+    });
+    res.json({counter: voteCount});
+})
+cocktailARouter.patch('/:id(\\d+)/down', asyncHandler, async(req, res) => {
+    const vote = await Vote.findOne({where: {
+        cocktailAId: req.params.id,
+        userId: res.locals.user.id
+    }})
+    if (!vote) {
+        Vote.create({cocktailAId: req.params.id, userId: res.locals.user.id, direction: false});
+    } else if (vote && vote.direction === true){
+        await vote.update({direction: false});
+    }
+    const votes = await Vote.findAll({where: {cocktailAId: req.params.id}})
+    let voteCount = 0;
+    votes.forEach(vote =>{
+        if(vote.direction) voteCount++;
+        else voteCount--;
+    });
+    res.json({counter: voteCount});
+})
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = cocktailARouter;
