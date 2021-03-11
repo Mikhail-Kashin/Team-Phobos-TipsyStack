@@ -1,7 +1,7 @@
 const express = require('express');
 const cocktailARouter = express.Router({mergeParams: true});
+const { CocktailA, Vote } = require('../db/models');
 const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require('./utils');
-const { CocktailA } = require('../db/models');
 const { check, validationResult } = require('express-validator');
 const { requireAuth } = require('../auth');
 
@@ -104,5 +104,21 @@ cocktailARouter.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req
     }
 
 }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = cocktailARouter;

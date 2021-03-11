@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { asyncHandler, csrfProtection } = require('./utils');
+const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require('./utils');
 const { check, validationResult } = require('express-validator');
-const { User } = require('../db/models');
+const { User, CocktailQ, CocktailA } = require('../db/models');
 const bcrypt = require('bcryptjs');
 const { logoutUser, loginUser } = require('../auth');
 
@@ -161,6 +161,20 @@ router.post('/demo', async (req, res) => {
   return loginUser(req, res, user);
 })
 
+router.get('/', asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  res.render('users-page', {users});
+}));
+
+router.get('/:id(\\d+)/CocktailQs',asyncHandler(async(req, res) => {
+  const allquestions = await CocktailQ.findAll({where: {userId: res.locals.user.id}})
+  res.render('user-questions-page', {allquestions})
+}));
+
+router.get('/:id(\\d+)/CocktailAs', asyncHandler(async(req, res) =>{
+  const allAnswers = await CocktailA.findAll({where: {userId: res.locals.user.id}, include: {CocktailQ}})
+  res.render('user-answers', {allAnswers})
+}));
 
 
 module.exports = router;
