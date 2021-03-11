@@ -21,6 +21,4 @@ block content
                     a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
                     p(class="created_by") Created by user: #{cocktailq.User.userName}
                     p(class='created-at') Posted: #{cocktailq.createdAt}
-        div(class="btn_show_all")
-            a(href='/CocktailQs/all')
-                button(type='submit' class='btn' id='btn_show_all') Show All
+        

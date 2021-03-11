@@ -86,6 +86,11 @@ router.post('/:id(\\d+)/edit', cocktailQValidators, asyncHandler(async (req, res
     }
 }))
 
+router.get('/all', asyncHandler(async (req, res) => {
+    const cocktailqs = await CocktailQ.findAll({ include: User})
+    res.render('cocktail-q-show-all', {cocktailqs})
+}))
+
 // router.delete('/id(\\d+)', asyncHandler(async (req, res, next) => {
 //     const cocktailq = await CocktailQ.findOne({
 //         where: {
