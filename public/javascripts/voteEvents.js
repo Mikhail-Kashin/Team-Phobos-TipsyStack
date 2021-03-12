@@ -1,48 +1,46 @@
+/* Checking if the fetch request returns ok and handling the json. */
 const handleResponse = async (res) => {
 	if (!res.ok) {
 		throw res;
-	}
-	const data = await res.json()
-	return data
+	};
+	const data = await res.json();
+	return data;
 };
 
+/* Callback functions for the voting click events. */
 const upvote = async (e) => {
 	try {
-		console.log('inside upvote')
 		const res = await fetch(`/CocktailAs/${e.target.id}`, {
 			method: "PATCH"
 		});
-		const data = await handleResponse(res)
+		const data = await handleResponse(res);
 		const targetArray = e.target.id.split('/');
-		// console.log(targetArray)
 		document.querySelector(`#vote-${targetArray[0]}`).innerHTML = data.counter;
-	}
-	catch (err) {
-		window.location.href = '/users/login'
-	}
-}
+	} catch (err) {
+		window.location.href = '/users/login';
+	};
+};
 const downvote = async (e) => {
 	try {
 		const res = await fetch(`/CocktailAs/${e.target.id}`, {
 			method: "PATCH"
 		});
-		const data = await handleResponse(res)
+		const data = await handleResponse(res);
 		const targetArray = e.target.id.split('/');
 		document.querySelector(`#vote-${targetArray[0]}`).innerHTML = data.counter;
-	}
-	catch (err) {
-		window.location.href = '/users/login'
-	}
-}
+	} catch (err) {
+		window.location.href = '/users/login';
+	};
+};
 
+/* Grabbing all of the upvote and downvote icons on the page */
 const upvoteButtons = document.querySelectorAll('.upvote');
-const downvoteButtons = document.querySelectorAll('.downvote')
-console.log(upvoteButtons)
+const downvoteButtons = document.querySelectorAll('.downvote');
 
+/* Adding event listeners to all of the upvote and downvote icons. */
 upvoteButtons.forEach(button => {
-  button.addEventListener('click', upvote)
-})
-
+  button.addEventListener('click', upvote);
+});
 downvoteButtons.forEach(button => {
-  button.addEventListener('click', downvote)
-})
+  button.addEventListener('click', downvote);
+});
