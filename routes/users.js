@@ -168,21 +168,14 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
   const id = req.params.id;
-  const user = await User.findByPk(id);
-  const questions = await CocktailQ.findAll({where: {userId: id}})
-  const answers = await CocktailA.findAll({where: {userId: id}})
-  res.render('user-profile', {user, questions, answers})
+  const user = await User.findOne({where: {id},
+     include: [CocktailQ,
+     {model: CocktailA, include: CocktailQ}]
+    });
+  console.log('this is the user', user.CocktailAs[0])
+  res.render('user-profile', {user})
 }));
 
-// router.get('/:id(\\d+)/CocktailQs',asyncHandler(async(req, res) => {
-//   const allquestions = await CocktailQ.findAll({where: {userId: res.locals.user.id}})
-//   res.render('user-profile', {allquestions})
-// }));
-
-// router.get('/:id(\\d+)/CocktailAs', asyncHandler(async(req, res) =>{
-//   const allAnswers = await CocktailA.findAll({where: {userId: res.locals.user.id}, include: {CocktailQ}})
-//   res.render('user-answers', {allAnswers})
-// }));
 
 
 module.exports = router;
