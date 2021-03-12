@@ -4,8 +4,9 @@ div(class='navbar')
   div(class="searchbar_container")
     form(action='/CocktailQs/search-result' method='post' class="searchbar_form")
       input(type='hidden' name='_csrf', value=csrfToken)
-      input(type='text' class='search-bar' name='query' placeholder='Search...')
-      button(type='submit', class="search-button") 🔍
+      div(class='sbar-and-btn')
+        input(type='text' class='search-bar' name='query' placeholder='Search...')
+        button(type='submit', class="search-button") 🔍
   div(class='user-btn-div')
     if(!user)
       a(href="/users/login" class='user-btn-a')
