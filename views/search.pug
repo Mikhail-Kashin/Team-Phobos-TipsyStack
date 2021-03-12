@@ -11,13 +11,13 @@ block content
     div(class="cocktail_q_container")
         div(class="header")
             div(class="h2_container")
-                h2 Your Cocktail-Qs
+                h2 Your Searched Result: Cocktail-Qs
                 div(class="container_btn")
                     a(href='/CocktailQs/new')
                         button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
         div(class="container_questions")
-            each cocktailq in cocktailqs
+            each question in questions 
                 div(class='most_recent_questions')
-                    a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
-                    p(class="created_by") Created by user: #{cocktailq.User.userName}
-                    p(class='created-at') Posted: #{cocktailq.createdAt}
+                    a(href=`/CocktailQs/${question.id}` class='cocktail_q')= question.question
+                    p(class="created_by") Created by user: #{question.User.userName}
+                    p(class='created-at') Posted: #{question.createdAt}

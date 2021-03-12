@@ -117,4 +117,14 @@ router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res, n
     }
 }))
 
+
+
+router.get('/all', asyncHandler(async (req, res) => {
+    const cocktailqs = await CocktailQ.findAll({
+        include: User
+    })
+
+    res.render('cocktail-q-show-all', { cocktailqs })
+}))
+
 module.exports = router;
