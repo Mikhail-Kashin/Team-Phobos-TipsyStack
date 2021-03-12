@@ -4,11 +4,15 @@
   margin-top: 10%;
   align-items: center;
   grid-row: 2;
+  background-color: transparent;
 }
 
 .loginPageWrapper{
   display: grid;
   grid-template-rows: 80px 1fr;
+  background-image: url('https://user-images.githubusercontent.com/74081636/110879422-f1571780-82aa-11eb-9d92-b8b8b1bf4564.jpg');
+  background-size: cover;
+  height: 100%;
 }
 
 .form-label{
@@ -29,7 +33,7 @@
   position: relative;
   box-sizing: border-box;
   background-color:white;
-  border: 1px solid black;
+  border: 3px ridge #0095ff;
   box-shadow: 0 10px 25px rgb(0 0 0 / 5%);
   padding: 24px;
   text-align: center;
@@ -48,6 +52,10 @@
 #email{
   margin-left: 10px;
   margin-bottom: 5px;
+}
+
+.demo-form{
+  background-color: transparent;
 }
 
 #password{
