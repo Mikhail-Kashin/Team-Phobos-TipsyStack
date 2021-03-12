@@ -24,6 +24,7 @@ img{
   grid-column: 2;
   background-color: white;
   margin: 5px;
+  width: 200px;
 }
 
 .user-btn-div{
@@ -49,18 +50,24 @@ img{
   border-radius: 5px;
 }
 
+.searchbar_container{
+  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchbar_form,
+.search-button,
 .user-btn-a{
   background-color: white;
 }
 
-.searchbar_container{
-  background-color: white;
-}
-
 .searchbar_form{
-  background-color: white;
+  vertical-align: middle;
 }
 
-.search-button{
+.sbar-and-btn{
+  margin-top: 16px;
   background-color: white;
+  margin-right: 4px;
 }
