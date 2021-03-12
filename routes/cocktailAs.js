@@ -1,7 +1,7 @@
 const express = require('express');
 const cocktailARouter = express.Router({mergeParams: true});
 const { CocktailA, Vote } = require('../db/models');
-const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require('./utils');
+const { asyncHandler, csrfProtection, cocktailNotFoundError } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const { requireAuth } = require('../auth');
 
@@ -11,22 +11,18 @@ const answerValidators = [
       .withMessage('Please provide an answer'),
   ];
 
-
-//need to update forms with csrf
-
+/* GET pulling up the new answer form. */
 cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
     const qId = req.params.qId
-    // console.log(req.params)
     res.render('answer', {qId, csrfToken: req.csrfToken()});
 }));
 
+/* POST posting a new answer. */
 cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(req, res)=>{
     const {
         answer
     } = req.body;
-
     const validatorErrors = validationResult(req);
-
     if(validatorErrors.isEmpty()){
          const cocktailA = await CocktailA.create({ cocktailQId: req.params.qId, answer, userId: res.locals.user.id})
         res.redirect(`/CocktailQs/${cocktailA.cocktailQId}`);
@@ -38,33 +34,30 @@ cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(r
             errors
         });
     }
-
 }));
 
+/* GET pulling up the update answer form */
 cocktailARouter.get('/:id(\\d+)', csrfProtection, asyncHandler(async(req, res)=>{
   const id = req.params.id;
   const cocktailA = await CocktailA.findByPk(id);
-
   res.render('edit-answer', {cocktailA, csrfToken: req.csrfToken()});
-}))
+}));
 
+/* POST updating an existing answer. */
 cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandler( async(req, res) =>{
     const id = req.params.id;
     const cocktailA = await CocktailA.findByPk(id);
-    // console.log(id, cocktailA);
     if(res.locals.user.id !== cocktailA.userId) {
-        const err = new Error("Unauthorized");
-        err.status = 401;
-        err.message = "You are not authorized to edit this Cocktail-A.";
-        err.title = "Unauthorized";
-        throw err;
+        const err = new Error('Access Denied 🚫')
+        err.status = 401
+        err.message = "You do no have sufficient access to edit this Cocktail-Q!"
+        err.title = "Access Denied 🚫"
+        throw err
       }
-
     if(cocktailA){
         const {answer} = req.body;
         const validatorErrors = validationResult(req);
         if(validatorErrors.isEmpty()) {
-            //error handling
             await cocktailA.update({answer})
             res.redirect(`/CocktailQs/${cocktailA.cocktailQId}`)
         } else {
@@ -75,18 +68,15 @@ cocktailARouter.post('/:id(\\d+)', csrfProtection, answerValidators, asyncHandle
             errors
         });
         }
-
     } else {
-        //next(e) error handling if no cocktailA at primary id
         next(cocktailQNotFoundError(req.params.id))
     }
 }));
 
+/* POST deleting an existing answer. */
 cocktailARouter.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req, res) =>{
     const id = req.params.id;
-
     const cocktailA = await CocktailA.findByPk(id);
-    // console.log(id, cocktailA);
     if(res.locals.user.id !== cocktailA.userId) {
         const err = new Error("Unauthorized");
         err.status = 401;
@@ -94,15 +84,12 @@ cocktailARouter.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async(req
         err.title = "Unauthorized";
         throw err;
     }
-
     if(cocktailA){
         await cocktailA.destroy()
         res.redirect(`/CocktailQs/${req.params.qId}`)
     } else {
-        //next(e) error handling if no cocktailA at primary id
         next(cocktailQNotFoundError(req.params.id))
     }
-
 }));
 
 

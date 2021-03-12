@@ -7,7 +7,9 @@
   border-bottom: 1px grey;
   display: flex;
   flex-direction: column;
-  padding: 20px
+  padding: 20px;
+  padding-left: 8px;
+  padding-right: 0;
 }
 
 .specific-question{
@@ -118,7 +120,7 @@
   border: 3px ridge #0095ff;
   padding: 5px;
   background-color: #E8E8E8;
-  width: 75%;
+  width: 74%;
   box-sizing: border-box;
 }
 
