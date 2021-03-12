@@ -16,8 +16,8 @@ block content
           div(class='question-and-buttons')
             p(class='specific-question')=cocktailq.question
             div(class='created-q-wrapper')
-              p(class='created-at') Posted At: #{cocktailq.createdAt}
-              p(class='created-by') Posted By: #{cocktailq.User.userName}
+              p(class='created-by') Created by user: #{cocktailq.User.userName}
+              p(class='created-at') Posted: #{cocktailq.createdAt}
             if(user && user.id === cocktailq.userId)
               div(class='edit-and-delete-btns')
                 a(class= 'fakebtn' href=`/CocktailQs/${cocktailq.id}/edit`)
@@ -28,6 +28,9 @@ block content
           a(href=`/CocktailQs/new` class="btn-anchor")
             button(class='btn') Post A Cocktail-Q
       div(class='answers-wrapper') 
+        if (cocktailq.CocktailAs.length === 0)
+          div(class='no-answers')
+            div(class='no-answers-text') This Cocktail-Q has not been answered. Please input a Cocktail-A below to share your knowledge!
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
@@ -40,8 +43,8 @@ block content
                 div(class='downvote-div')
                   img(src="https://user-images.githubusercontent.com/74081636/110870508-90bfde80-829a-11eb-8e96-e4f277ea245a.jpeg", alt="Downvote" class='downvote vote-icons' id=`${cocktailA.id}/downvote`)
               div(class='created-at-wrapper')
-                p(class='created-at') Posted At: #{cocktailA.createdAt}
-                p(class='created-by') Posted By: #{cocktailA.User.userName}
+                p(class='created-by') Created by user: #{cocktailA.User.userName}
+                p(class='created-at') Posted: #{cocktailA.createdAt}
             if(user && user.id === cocktailA.userId)
               div(class='edit-and-delete-btns')
                 a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
