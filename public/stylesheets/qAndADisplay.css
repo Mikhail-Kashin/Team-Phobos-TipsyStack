@@ -74,12 +74,13 @@
 
 .created-at,
 .created-by{
-  font-size: 11px;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   padding: 2px;
   background-color: #E8E8E8;
+  font-size: 12px;
+  color: midnightblue;
 }
 
 .created-at-wrapper,
@@ -129,4 +130,8 @@
 }
 .created-q-wrapper{
   border-bottom: 1px dashed darkblue;
+}
+
+.created-by{
+  font-weight: bold ;
 }
