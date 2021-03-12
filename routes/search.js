@@ -23,6 +23,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
 router.post('/', csrfProtection, asyncHandler(async (req, res) => {
     const { query } = req.body;
+    console.log('this is query', query)
     const questions = await CocktailQ.findAll({
         include: User,
         where: {

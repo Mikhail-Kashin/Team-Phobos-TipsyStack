@@ -2,22 +2,24 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/cocktail-q-display.css")
+  link(rel="stylesheet" href="/stylesheets/search-result.css")
   link(rel="stylesheet" href="/stylesheets/navbar.css")
+  link(rel="stylesheet" href="/stylesheets/sidebar.css")
 
 block content
  div(class="cocktail_q_wrapper")
     include navbar
+    include sidebar
     div(class="cocktail_q_container")
         div(class="header")
             div(class="h2_container")
-                h2 Your Searched Result: Cocktail-Qs
+                h2 Your Searched Result(s)...
                 div(class="container_btn")
                     a(href='/CocktailQs/new')
                         button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
-        div(class="container_questions")
-            each question in questions 
-                div(class='most_recent_questions')
-                    a(href=`/CocktailQs/${question.id}` class='cocktail_q')= question.question
-                    p(class="created_by") Created by user: #{question.User.userName}
-                    p(class='created-at') Posted: #{question.createdAt}
+            div(class="container_questions")
+                each question in questions 
+                    div(class='most_recent_questions')
+                        a(href=`/CocktailQs/${question.id}` class='cocktail_q')= question.question
+                        p(class="created_by") Created by user: #{question.User.userName}
+                        p(class='created-at') Posted: #{question.createdAt}

@@ -2,7 +2,7 @@ div(class='navbar')
   a(href="/CocktailQs" class='logo')
     img(src="https://user-images.githubusercontent.com/75585372/110838068-0a8ea280-8270-11eb-9714-210200bb74e7.png", alt="Tipsy Stack Logo")
   div(class="searchbar_container")
-    form(action='/CocktailQs/search-result' method='post')
+    form(action='/CocktailQs/search-result' method='post' class="searchbar_form")
       input(type='hidden' name='_csrf', value=csrfToken)
       input(type='text' class='search-bar' name='query' placeholder='Search...')
       button(type='submit', class="search-button") 🔍
