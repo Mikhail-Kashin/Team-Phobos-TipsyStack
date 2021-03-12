@@ -12,7 +12,7 @@ const cocktailqRouter = require('./routes/cocktailq')
 const { restoreUser } = require('./auth');
 const cocktailARouter = require('./routes/cocktailAs');
 const searchRouter = require('./routes/search')
-
+const { csrfProtection } = require('./routes/utils')
 const app = express();
 
 // view engine setup
@@ -40,6 +40,11 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+app.get('*', csrfProtection, (req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  console.log(res.locals.csrfToken)
+  next()
+})
 app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
