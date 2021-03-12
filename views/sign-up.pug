@@ -1,16 +1,20 @@
 extends layout
 append head
-  //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/signUp-Form.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
   link(rel="stylesheet" href="/stylesheets/navbar.css")
 include form-creator
 block content
-  +validationErrorSummary(errors)
   div(class='signUpPageWrapper')
     include navbar
     include sidebar
     div(class='signUpDiv')
+      if errors
+        div(class='alert alert-danger' role='alert')
+          p(class='alert-p') The following error(s) occurred:
+            ul(class='alert-ul')
+              each error in errors
+                li(class='alert-li')= error
       form(action='/users/signup', method='post', class='signup-form')
         input(type='hidden' name='_csrf' value=csrfToken)
         img(src="https://user-images.githubusercontent.com/75585372/110696295-e6bc5580-81b8-11eb-85c9-fa60ffc936cb.png", class="signup-logo")

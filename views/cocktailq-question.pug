@@ -6,8 +6,8 @@ append head
 block content
   div(class='answerpg-wrapper')
     include navbar
-    +validationErrorSummary(errors)
     div(class='form-wrapper')
+      +validationErrorSummary(errors)
       div(class='header')
         h1 Ask a Cocktail-Q
         form(action='/CocktailQs/new' method='post' class='form')
@@ -20,5 +20,3 @@ block content
           div(class='form-btn')
             button(type='submit' class='btn') Post Cocktail-Q
 
-
-//- fieldName, labelText, fieldValue, fieldType = 'text', placeholder = null
