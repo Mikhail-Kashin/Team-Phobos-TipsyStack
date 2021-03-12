@@ -39,12 +39,12 @@ router.post('/new', csrfProtection, cocktailQValidators, asyncHandler(async (req
 }));
 
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
     const cocktailq = await CocktailQ.findOne({
         where: { id: req.params.id },
         include: CocktailA
     })
-    console.log(cocktailq)
+    // console.log(cocktailq)
     res.render('cocktailq-id', { cocktailq, csrfToken: req.csrfToken() })
 }));
 

@@ -66,9 +66,9 @@ const registrationValidators = [
 ];
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
 
 router.get('/login', csrfProtection, asyncHandler( async (req, res) =>{
   res.render('login-form', {
@@ -166,15 +166,23 @@ router.get('/', asyncHandler(async (req, res) => {
   res.render('users-page', {users});
 }));
 
-router.get('/:id(\\d+)/CocktailQs',asyncHandler(async(req, res) => {
-  const allquestions = await CocktailQ.findAll({where: {userId: res.locals.user.id}})
-  res.render('user-questions-page', {allquestions})
+router.get('/:id(\\d+)',asyncHandler(async(req, res) => {
+  const user = User.findOne({
+    where: { id: req.params.id },
+    include: [CocktailQ, CocktailA]
+  })
+  res.render('user-profile', {user})
 }));
 
-router.get('/:id(\\d+)/CocktailAs', asyncHandler(async(req, res) =>{
-  const allAnswers = await CocktailA.findAll({where: {userId: res.locals.user.id}, include: {CocktailQ}})
-  res.render('user-answers', {allAnswers})
-}));
+// router.get('/:id(\\d+)/CocktailQs',asyncHandler(async(req, res) => {
+//   const allquestions = await CocktailQ.findAll({where: {userId: res.locals.user.id}})
+//   res.render('user-profile', {allquestions})
+// }));
+
+// router.get('/:id(\\d+)/CocktailAs', asyncHandler(async(req, res) =>{
+//   const allAnswers = await CocktailA.findAll({where: {userId: res.locals.user.id}, include: {CocktailQ}})
+//   res.render('user-answers', {allAnswers})
+// }));
 
 
 module.exports = router;

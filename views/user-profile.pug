@@ -1,0 +1,16 @@
+extends layout
+append head
+  link(rel='stylesheet' href='/stylesheets/users-page.css')
+  link(rel='stylesheet' href='/stylesheets/navbar.css')
+  link(rel="stylesheet" href="/stylesheets/sidebar.css")
+block content
+  div(class='usersPg-wrapper')
+    include navbar
+    include sidebar
+    div(class='user-wrapper')
+      div(class='users-h2')
+        h2= user.userName
+      div(class='users-container')
+        each question in user.CocktailQ.question
+          div(class='user-divs')
+            a(href=`users/${user.id}` class='user')= user.userName

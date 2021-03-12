@@ -1,0 +1,26 @@
+.users-wrapper{
+    display: flex;
+    justify-content: center;
+    grid-row: 2;
+}
+
+.usersPg-wrapper{
+    display: grid;
+    grid-template-rows: 80px 1fr;
+}
+
+.users-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-divs{
+    display: flex;
+    border: 1px solid black;
+    padding: 20px;
+
+}
+
+/* .user{
+    align-items: center;
+} */
