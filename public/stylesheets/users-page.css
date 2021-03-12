@@ -19,8 +19,27 @@
 
 .user-divs{
     display: flex;
+    font-size: 20px;
+    font-weight:bolder;
     border:  3px ridge #0095ff;
     padding: 20px;
     margin: 15px;
     border-radius: 3px;
+    text-decoration: none;
+    color: white;
+    background-image: url('../images/logo.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-blend-mode:soft-light;
+    background-color: transparent;
+    text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
+}
+
+.user-divs:hover{
+    background-blend-mode:luminosity;
+    color: midnightblue;
 }
