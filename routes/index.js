@@ -3,6 +3,7 @@ const router = express.Router();
 const {asyncHandler, csrfProtection} = require('./utils')
 const {Vote} = require('../db/models')
 
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     console.log('inside index', res.locals.csrfToken)
@@ -11,7 +12,6 @@ router.get('/', function (req, res, next) {
 
 
 router.patch('/CocktailAs/:id(\\d+)/upvote', asyncHandler(async(req, res) => {
-  if(!res.locals.user) res.redirect('/users/login')
   const vote = await Vote.findOne({where: {
       cocktailAId: req.params.id,
       userId: res.locals.user.id
@@ -30,8 +30,6 @@ router.patch('/CocktailAs/:id(\\d+)/upvote', asyncHandler(async(req, res) => {
   res.json({counter: voteCount});
 }))
 router.patch('/CocktailAs/:id(\\d+)/downvote', asyncHandler(async(req, res) => {
-  // console.log('in the backend')
-  if(!res.locals.user) res.redirect('/users/login')
   const vote = await Vote.findOne({where: {
       cocktailAId: req.params.id,
       userId: res.locals.user.id

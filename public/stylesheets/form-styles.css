@@ -9,6 +9,7 @@
 .inner-form-wrapper {
     border-radius: 3px;
     padding: 10px;
+    border: 3px ridge #0095ff;
 }
 
 .form-wrapper {
