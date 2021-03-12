@@ -86,12 +86,12 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler( async(req, 
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         return loginUser(req, res, user);
-      }
-    }
+      };
+    };
     errors.push('Login failed for the provided email address and password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
-  }
+  };
   res.render('login-form', { email, errors, csrfToken: req.csrfToken() });
 }));
 
