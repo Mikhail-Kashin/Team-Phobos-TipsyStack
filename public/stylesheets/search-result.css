@@ -1,10 +1,10 @@
 .container_questions{
-    display: flex;
+    display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:center;
     align-content: center;
-    /* flex-flow: wrap; */
-    
+    /* flex-flow: wrap;
+     */
     
 }
 .cocktail_q{
@@ -54,14 +54,14 @@
 
 .cocktail_q_container{
 display: grid;
+grid-row: 2;
 justify-content: center;
 justify-self: center;
-grid-column-start: 2;
+ grid-column-start: 2;
 grid-column-end: 5;
 grid-row-end: 3;
 grid-row: 2;
 align-self: center;
- 
 }
  .created-at{
     /* font-weight: bolder; */
@@ -86,16 +86,17 @@ align-self: center;
 
 .h2_container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    flex-flow: column;
+    align-items: center;
 }
 
-
 .cocktail_q_wrapper {
-  display: grid;
-  grid-template-columns: 1fr 9fr;
-  grid-template-rows: 80px 1fr;
-  height: 100%;
-  width: auto;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: 80px 1fr;
+    height: 100%;
+    width: auto;
 }
 
 .most_recent_questions{
@@ -107,7 +108,7 @@ align-self: center;
     flex-flow: column;
     margin: 20px;
     border-radius: 3px;
-    align-self: flex-end;
+    align-self: center;
 }
 
 .created_by {
@@ -120,65 +121,5 @@ align-self: center;
 
 h2 {
     color: midnightblue;
-}
-
-#btn_show_all{
- text-decoration: none;
- width: 510px;
-}
-
-#btn_show_all::before,
-#btn_show_all::after
- {
-    content: '';
-    position: absolute;
-    width: inherit;
-    border-left: inherit;
-    z-index: -1;
-    text-decoration: none;
-}
-
-#btn_show_all::before {
-    height: 80%;
-    top: 10%;
-    left: calc(-0.15em - 0.08em * 2);
-    filter: brightness(0.8);
-    text-decoration: none;
-    width: 100px;
-}
-
-#btn_show_all::after {
-    height: 60%;
-    top: 20%;
-    left: calc(-0.15em * 2 - 0.08em * 3);
-    filter: brightness(0.6);
-    text-decoration: none;
-}
-
-.btn_show_all + a {
-    font-size: 14px;
-    position: relative;
-    box-sizing: border-box;
-    border: 3px ridge;
-    background-color: #0095ff;
-    width: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
-    transition: 0.3s;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#btn_show_all:hover {
-    transform: translateX(0.15em);
-    text-decoration: none;
-}
-
-.btn_show_all{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
