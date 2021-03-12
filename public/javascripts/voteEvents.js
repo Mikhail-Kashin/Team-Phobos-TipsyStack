@@ -18,7 +18,7 @@ const upvote = async (e) => {
 		document.querySelector(`#vote-${targetArray[0]}`).innerHTML = data.counter;
 	}
 	catch (err) {
-		alert(err)
+		window.location.href = '/users/login'
 	}
 }
 const downvote = async (e) => {
@@ -31,7 +31,7 @@ const downvote = async (e) => {
 		document.querySelector(`#vote-${targetArray[0]}`).innerHTML = data.counter;
 	}
 	catch (err) {
-		alert(err)
+		window.location.href = '/users/login'
 	}
 }
 
