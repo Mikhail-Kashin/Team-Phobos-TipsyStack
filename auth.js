@@ -9,7 +9,7 @@ const loginUser = (req, res, user) => {
     console.log(req.session)
     //need to test redirecting
     req.session.save(() =>{
-        res.redirect('/');
+        res.redirect('/CocktailQs');
     })
 };
 
