@@ -9,11 +9,13 @@ block content
     include sidebar
     div(class='users-wrapper')
       div(class='users-h2')
-        h2= user.userName
+        h1= user.userName
+      h2 Questions
       div(class='users-container')
         each question in user.CocktailQs
           div(class='user-divs')
             a(href=`/CocktailQs/${question.id}` class='user')= question.question
+      h2 Answers
       div(class='users-container')
         each answer in user.CocktailAs
           div(class='user-divs')
