@@ -92,6 +92,12 @@ width: 100%;
 .h2_container{
     display: flex;
     justify-content: space-evenly;
+    color: lightsteelblue;
+    background-color: transparent;
+    text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
 }
 
 
@@ -122,10 +128,6 @@ width: 100%;
     color: midnightblue;
     font-size: 12px;
     font-weight: bold;
-}
-
-h2 {
-    color: midnightblue;
 }
 
 #btn_show_all{
