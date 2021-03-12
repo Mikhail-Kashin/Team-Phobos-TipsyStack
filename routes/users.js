@@ -166,12 +166,12 @@ router.get('/', asyncHandler(async (req, res) => {
   res.render('users-page', {users});
 }));
 
-router.get('/:id(\\d+)',asyncHandler(async(req, res) => {
-  const user = User.findOne({
-    where: { id: req.params.id },
-    include: [CocktailQ, CocktailA]
-  })
-  res.render('user-profile', {user})
+router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
+  const id = req.params.id;
+  const user = await User.findByPk(id);
+  const questions = await CocktailQ.findAll({where: {userId: id}})
+  const answers = await CocktailA.findAll({where: {userId: id}})
+  res.render('user-profile', {user, questions, answers})
 }));
 
 // router.get('/:id(\\d+)/CocktailQs',asyncHandler(async(req, res) => {

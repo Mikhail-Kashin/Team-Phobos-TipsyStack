@@ -7,10 +7,14 @@ block content
   div(class='usersPg-wrapper')
     include navbar
     include sidebar
-    div(class='user-wrapper')
+    div(class='users-wrapper')
       div(class='users-h2')
         h2= user.userName
       div(class='users-container')
-        each question in user.CocktailQ.question
+        each question in questions
           div(class='user-divs')
-            a(href=`users/${user.id}` class='user')= user.userName
+            a(href=`CocktailQs/${question.id}` class='user')= question.question
+    //-   div(class='users-container')
+    //-     each answer in answers
+    //-       div(class='user-divs')
+    //-         a(href=`CocktailAs/${answer.id}` class='user')= answer.answer
