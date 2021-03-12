@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {asyncHandler, csrfProtection} = require('./utils')
 const {Vote} = require('../db/models')
+const {requireAuth} = require('../auth')
 
 
 /* GET home page. */
@@ -11,7 +12,11 @@ router.get('/', function (req, res, next) {
 });
 
 
+<<<<<<< HEAD
 router.patch('/CocktailAs/:id(\\d+)/upvote', asyncHandler(async(req, res) => {
+=======
+router.patch('/CocktailAs/:id(\\d+)/upvote', requireAuth, asyncHandler(async(req, res) => {
+>>>>>>> main
   const vote = await Vote.findOne({where: {
       cocktailAId: req.params.id,
       userId: res.locals.user.id
@@ -29,7 +34,11 @@ router.patch('/CocktailAs/:id(\\d+)/upvote', asyncHandler(async(req, res) => {
   });
   res.json({counter: voteCount});
 }))
+<<<<<<< HEAD
 router.patch('/CocktailAs/:id(\\d+)/downvote', asyncHandler(async(req, res) => {
+=======
+router.patch('/CocktailAs/:id(\\d+)/downvote', requireAuth, asyncHandler(async(req, res) => {
+>>>>>>> main
   const vote = await Vote.findOne({where: {
       cocktailAId: req.params.id,
       userId: res.locals.user.id
