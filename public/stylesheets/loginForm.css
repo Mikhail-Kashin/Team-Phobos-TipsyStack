@@ -10,8 +10,6 @@
 .loginPageWrapper{
   display: grid;
   grid-template-rows: 80px 1fr;
-  background-image: url('https://user-images.githubusercontent.com/74081636/110879422-f1571780-82aa-11eb-9d92-b8b8b1bf4564.jpg');
-  background-size: cover;
   height: 100%;
 }
 
