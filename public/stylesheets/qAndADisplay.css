@@ -135,3 +135,27 @@
 .created-by{
   font-weight: bold ;
 }
+
+.no-answers{
+  border: 3px ridge #0095ff;
+  width: 100%;
+  height: 275px;
+  box-sizing: border-box;
+  background-image: url('https://user-images.githubusercontent.com/74081636/111007596-3471c300-835d-11eb-839f-f65dba876d0c.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-answers-text{
+  background-color: transparent;
+  text-align: center;
+  text-shadow: -1px 1px 2px #0095ff,
+    1px 1px 2px #0095ff,
+    1px -1px 0 #0095ff,
+    -1px -1px 0 #0095ff;
+  font-size: x-large;
+  color: darkblue;
+}

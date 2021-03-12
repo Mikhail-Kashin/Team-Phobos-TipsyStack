@@ -28,6 +28,9 @@ block content
           a(href=`/CocktailQs/new` class="btn-anchor")
             button(class='btn') Post A Cocktail-Q
       div(class='answers-wrapper') 
+        if (cocktailq.CocktailAs.length === 0)
+          div(class='no-answers')
+            div(class='no-answers-text') This Cocktail-Q has not been answered. Please input a Cocktail-A below to share your knowledge!
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
