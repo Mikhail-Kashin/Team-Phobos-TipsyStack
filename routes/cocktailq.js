@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { asyncHandler, csrfProtection, cocktailQNotFoundError } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const { CocktailQ, CocktailA , User } = require('../db/models');
+const { CocktailQ, CocktailA , User, Vote } = require('../db/models');
 const { requireAuth } = require('../auth');
 
 const cocktailQValidators = [
@@ -42,10 +42,21 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     // console.log(req.params.id)
     const cocktailq = await CocktailQ.findOne({
         where: { id: req.params.id },
-        include: CocktailA
-    })
-    // console.log(cocktailq)
-    res.render('cocktailq-id', { cocktailq, csrfToken: req.csrfToken() })
+        include: {model: CocktailA, include: [Vote, User]},
+    });
+
+    const votes = cocktailq.CocktailAs.reduce((votes, answer) => {
+        const totalVoteCount = answer.Votes.reduce((voteCount, vote) => {
+            if (vote.voteDirection) voteCount++;
+            else voteCount--;
+            return voteCount;
+        },0);
+        votes[answer.id] = totalVoteCount;
+        return votes;
+    },{});
+
+    console.log('votes',votes)
+    res.render('cocktailq-id', { cocktailq, votes, csrfToken: req.csrfToken() })
 }));
 
 
@@ -104,6 +115,16 @@ router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res, n
     } else {
         next(cocktailQNotFoundError(req.params.id))
     }
+}))
+
+
+
+router.get('/all', asyncHandler(async (req, res) => {
+    const cocktailqs = await CocktailQ.findAll({
+        include: User
+    })
+
+    res.render('cocktail-q-show-all', { cocktailqs })
 }))
 
 module.exports = router;

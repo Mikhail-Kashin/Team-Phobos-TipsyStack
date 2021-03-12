@@ -21,7 +21,7 @@ block content
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/delete`)
                   input(type='hidden' name='_csrf' value=csrfToken)
                   button(class='change-btn' type='submit') Delete
-                a(href=`/CocktailQs/${cocktailq.id}/edit`)
+                a(class= 'edit-and-delete-btns' href=`/CocktailQs/${cocktailq.id}/edit`)
                   button(class='change-btn') Edit
           a(href=`/CocktailQs/new` class="btn-anchor")
             button(class='btn') Post A Cocktail-Q
@@ -29,14 +29,17 @@ block content
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
             p(class='answer-p')=cocktailA.answer
-            div(class='votes-wrapper')
-              div(class='up-and-down')
-                img(src="", alt="Upvote" class='upvote' id=`${cocktailA.id}/upvote`)
-                img(src="", alt="Downvote" class='downvote' id=`${cocktailA.id}/downvote`)
-              div(class='vote-display')
-                div(id=`vote-${cocktailA.id}`)  0
-            div(class='created-at-wrapper')
-              p(class='created-at') Posted At: #{cocktailA.createdAt}
+            div(class='lower-answer-wrapper')
+              div(class='votes-wrapper')
+                div(class='upvote-div')
+                  img(src="https://user-images.githubusercontent.com/74081636/110870195-fbbce580-8299-11eb-87c8-3cc27983ff5f.jpeg", alt="Upvote" class='upvote vote-icons' id=`${cocktailA.id}/upvote`)
+                div(class='vote-display-div')
+                  div(id=`vote-${cocktailA.id}` class='vote-display')=votes[cocktailA.id]
+                div(class='downvote-div')
+                  img(src="https://user-images.githubusercontent.com/74081636/110870508-90bfde80-829a-11eb-8e96-e4f277ea245a.jpeg", alt="Downvote" class='downvote vote-icons' id=`${cocktailA.id}/downvote`)
+              div(class='created-at-wrapper')
+                p(class='created-at') Posted At: #{cocktailA.createdAt}
+                p(class='created-by') Posted By: #{cocktailA.User.userName}
             if(user && user.id === cocktailA.userId)
               div(class='btn-div')
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}/delete`)
