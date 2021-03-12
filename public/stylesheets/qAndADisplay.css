@@ -7,15 +7,18 @@
   border-bottom: 1px grey;
   display: flex;
   flex-direction: column;
+  padding: 20px
 }
 
 .specific-question{
   font-size: xx-large;
   font-weight: bold;
-  vertical-align: baseline;
+  text-align: center;
   margin-bottom: 0;
+  margin-top: 0;
   background-color: #E8E8E8;
-
+  vertical-align: baseline;
+  border-bottom: 1px dashed darkblue
 }
 
 .specific-question-wrapper{
@@ -117,4 +120,11 @@
   background-color: #E8E8E8;
   width: 75%;
   box-sizing: border-box;
+}
+
+.edit-and-delete-btns{
+  display: flex;
+}
+.created-q-wrapper{
+  border-bottom: 1px dashed darkblue;
 }
