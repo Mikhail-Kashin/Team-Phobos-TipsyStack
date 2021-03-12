@@ -61,3 +61,17 @@
   position: relative;
   top: -40px;
 }
+.alert,
+.alert-p,
+.alert-li,
+.alert-ul{
+  background-color: #f8d7da;
+  margin: 10px;
+  color: red;
+  font-weight: bold;
+  align-self: center;
+}
+
+.alert{
+  border: 3px ridge darkred;
+}
