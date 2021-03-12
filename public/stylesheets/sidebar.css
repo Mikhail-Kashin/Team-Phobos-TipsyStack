@@ -5,59 +5,138 @@
   flex-direction: column;
   justify-content: flex-start;
   border: 1px solid darkblue;
+  border-right: 1px solid darkblue;
   height: 100%;
   margin: 10px;
+  margin-top: -30.5px;
+  margin-left: 0px;
   position: fixed;
   top: 100px;
   background-color: white;
   padding: 10px;
+  background-image: url("https://user-images.githubusercontent.com/75585372/110873612-20b45700-82a0-11eb-9f59-a49269eb1a6e.jpg");
+  background-size: 100%;
 }
 
-.home, 
+.home-button{
+  display: inline-block;
+  position: relative;
+  font-size: 25px;
+  background-color: transparent;
+  top: 180px;
+  font-weight: bold;
+  color: lightsteelblue;
+}
+
+.public{
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  background-color: transparent;
+  top: 215px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: lightsteelblue
+}
+
+.users{
+  display: inline-block;
+  position: relative;
+  font-size: 17px;
+  background-color: transparent;
+  top: 215px;
+  margin-left: 15px;
+  color: lightsteelblue
+}
+
+.home,
 .users,
 .my-questions,
 .my-answers{
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: transparent;
+  text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
 }
 
 .home{
   text-decoration: none;
 }
 
-.home,
-.public,
+
 .personal{
-  font-size: medium;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  top: 260px;
+  margin-bottom: 8px;
   font-weight: bold;
-  margin-top: 30px;
-  background-color: white;
+  color: lightsteelblue
+}
+
+.my-questions{
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  font-size: 17px;
+  top: 260px;
+  margin-left: 15px;
+  padding-bottom: 8px;
+}
+
+.my-answers{
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  font-size: 17px;
+  top: 260px;
+  margin-left: 15px;
 }
 
 .public-links-wrapper,
 .personal-links-wrapper{
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: transparent;
 }
 
 .my-questions,
 .my-answers,
 .users{
-  padding: 10px;
-  margin:20px;
-  margin-top: 0;
+  background-color: transparent;
+  color: white;
+  text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
 }
 
 .my-questions{
   margin-bottom: 0;
+  background-color: transparent;
+  color: white;
+  text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
 }
 
 .link:hover{
-  color: darkblue;
+  color: lightsteelblue;
+}
+.link:hover.home-button{
+  color: steelblue;
 }
 
 .public-wrapper,
 .personal-wrapper{
-  background-color: white;
+  color: white;
+  background-color: transparent;
+  text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff;
 }
