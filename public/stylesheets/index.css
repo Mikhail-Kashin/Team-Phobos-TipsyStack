@@ -1,3 +1,58 @@
-h1 {
-    color: #555555;
+.splashWrapper{
+    display: grid;
+    grid-template-rows: 80px 1fr;
+  }
+
+.splashDiv{
+    display: flex;
+    justify-content: center;
+    grid-row: 2;
+}
+
+
+
+.splashLogo{
+    background-image: url("https://user-images.githubusercontent.com/75585372/110853136-3c5c3500-8281-11eb-8fd4-67940074f661.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1422px;
+    height: 800px;
+}
+
+.splashText{
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    font-size: 50px;
+    margin-left: 390px;
+}
+
+.stackBoldme{
+background-color: transparent;
+font-weight: bold;
+}
+
+.splashMoreText{
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
+    margin-left: 460px;
+}
+
+.italicMe{
+    font-style: italic;
+    background-color: transparent;
+}
+
+.MostRecent{
+    font-size: 25px;
+    background-color: transparent;
+}
+
+.aTagquestions{
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
 }

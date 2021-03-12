@@ -29,11 +29,8 @@ router.post('/', csrfProtection, asyncHandler(async (req, res) => {
             question: {
                 [Op.substring] : `%${query}%`
             }, 
-        },
-
-        
+        },      
     })
-
     res.render('search', {
         questions,
         csrfToken: req.csrfToken()
