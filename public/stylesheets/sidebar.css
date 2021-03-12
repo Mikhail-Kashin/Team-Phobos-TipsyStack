@@ -124,12 +124,11 @@
 				  -1px -1px 0 #0095ff;
 }
 
+.home-button:hover,
 .link:hover{
-  color: lightsteelblue;
+  color: darkblue;
 }
-.link:hover.home-button{
-  color: steelblue;
-}
+
 
 .public-wrapper,
 .personal-wrapper{

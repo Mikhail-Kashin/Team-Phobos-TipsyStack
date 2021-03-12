@@ -16,13 +16,16 @@ block content
         div(class='specific-question-wrapper')
           div(class='question-and-buttons')
             p(class='specific-question')=cocktailq.question
+            div(class='created-q-wrapper')
+              p(class='created-at') Posted At: #{cocktailq.createdAt}
+              p(class='created-by') Posted By: #{cocktailq.User.userName}
             if(user && user.id === cocktailq.userId)
               div(class='edit-and-delete-btns')
+                a(class= 'fakebtn' href=`/CocktailQs/${cocktailq.id}/edit`)
+                  button(class='change-btn') Edit
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/delete`)
                   input(type='hidden' name='_csrf' value=csrfToken)
                   button(class='change-btn' type='submit') Delete
-                a(class= 'edit-and-delete-btns' href=`/CocktailQs/${cocktailq.id}/edit`)
-                  button(class='change-btn') Edit
           a(href=`/CocktailQs/new` class="btn-anchor")
             button(class='btn') Post A Cocktail-Q
       div(class='answers-wrapper') 
@@ -41,12 +44,12 @@ block content
                 p(class='created-at') Posted At: #{cocktailA.createdAt}
                 p(class='created-by') Posted By: #{cocktailA.User.userName}
             if(user && user.id === cocktailA.userId)
-              div(class='btn-div')
+              div(class='edit-and-delete-btns')
+                a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
+                  button(class='change-btn', type='submit') Edit
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}/delete`)
                   input(type='hidden' name='_csrf' value=csrfToken)
                   button(class='change-btn', type='submit') Delete
-                a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
-                  button(class='change-btn', type='submit') Edit
         div(class='back-and-post')
           div(class='btn-div1')
             a(href=`/CocktailQs/${cocktailq.id}/CocktailAs`)
