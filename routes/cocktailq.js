@@ -42,7 +42,7 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     console.log(req.params.id)
     const cocktailq = await CocktailQ.findOne({
         where: { id: req.params.id },
-        include: {model: CocktailA, include: Vote}
+        include: {model: CocktailA, include: [Vote, User]},
     });
 
     const votes = cocktailq.CocktailAs.reduce((votes, answer) => {
@@ -115,6 +115,16 @@ router.post('/:id(\\d+)/delete', csrfProtection, asyncHandler(async (req, res, n
     } else {
         next(cocktailQNotFoundError(req.params.id))
     }
+}))
+
+
+
+router.get('/all', asyncHandler(async (req, res) => {
+    const cocktailqs = await CocktailQ.findAll({
+        include: User
+    })
+
+    res.render('cocktail-q-show-all', { cocktailqs })
 }))
 
 module.exports = router;

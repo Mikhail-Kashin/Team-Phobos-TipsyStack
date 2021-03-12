@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {asyncHandler} = require('./utils')
+const {asyncHandler, csrfProtection} = require('./utils')
 const {Vote} = require('../db/models')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
+    console.log('inside index', res.locals.csrfToken)
   res.render('index', { title: 'a/A Express Skeleton Home' });
 });
 
