@@ -20,6 +20,15 @@
   box-sizing: border-box;
 }
 
+.home{
+  color: white;
+  background-color: transparent;
+  text-shadow: -1px 1px 2px #0095ff,
+  1px 1px 2px #0095ff,
+  1px -1px 0 #0095ff,
+  -1px -1px 0 #0095ff;
+}
+
 .home-button{
   display: inline-block;
   position: relative;
@@ -41,6 +50,7 @@
   color: lightsteelblue
 }
 
+
 .users{
   display: inline-block;
   position: relative;
@@ -48,24 +58,13 @@
   background-color: transparent;
   top: 215px;
   margin-left: 15px;
-  color: lightsteelblue
-}
-
-.home,
-.users,
-.my-questions,
-.my-answers{
   color: white;
-  background-color: transparent;
   text-shadow: -1px 1px 2px #0095ff,
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
 }
 
-.home{
-  text-decoration: none;
-}
 
 
 .personal{
@@ -79,6 +78,9 @@
   color: lightsteelblue
 }
 
+
+
+.my-answers,
 .my-questions{
   background-color: transparent;
   display: inline-block;
@@ -87,15 +89,12 @@
   top: 260px;
   margin-left: 15px;
   padding-bottom: 8px;
-}
-
-.my-answers{
   background-color: transparent;
-  display: inline-block;
-  position: relative;
-  font-size: 17px;
-  top: 260px;
-  margin-left: 15px;
+  color: white;
+  text-shadow: -1px 1px 2px #0095ff,
+				  1px 1px 2px #0095ff,
+				  1px -1px 0 #0095ff,
+				  -1px -1px 0 #0095ff
 }
 
 .public-links-wrapper,
@@ -105,39 +104,17 @@
   background-color: transparent;
 }
 
-.my-questions,
-.my-answers,
-.users{
-  background-color: transparent;
-  color: white;
-  text-shadow: -1px 1px 2px #0095ff,
-				  1px 1px 2px #0095ff,
-				  1px -1px 0 #0095ff,
-				  -1px -1px 0 #0095ff;
-}
-
-.my-questions{
-  margin-bottom: 0;
-  background-color: transparent;
-  color: white;
-  text-shadow: -1px 1px 2px #0095ff,
-				  1px 1px 2px #0095ff,
-				  1px -1px 0 #0095ff,
-				  -1px -1px 0 #0095ff;
-}
-
-.home-button:hover,
-.link:hover{
-  color: darkblue;
-}
-
-
 .public-wrapper,
 .personal-wrapper{
   color: white;
   background-color: transparent;
   text-shadow: -1px 1px 2px #0095ff,
-				  1px 1px 2px #0095ff,
-				  1px -1px 0 #0095ff,
-				  -1px -1px 0 #0095ff;
+          1px 1px 2px #0095ff,
+          1px -1px 0 #0095ff,
+          -1px -1px 0 #0095ff;
+}
+
+.home-button:hover,
+.link:hover{
+  color: darkblue;
 }
