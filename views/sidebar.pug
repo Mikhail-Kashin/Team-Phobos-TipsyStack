@@ -5,8 +5,12 @@ div(class='sidebar')
     div(class='public') PUBLIC
     div(class='public-links-wrapper')
       a(href="/users", class='users', class="link") Users
-  div(class='personal-wrapper')
-    div(class='personal') PERSONAL LINKS
-    div(class='personal-links-wrapper')
-      a(href="", class='my-questions', class='link') My Questions
-      a(href="", class='my-answers', class='link') My Answers
+  if locals.authenticated
+    div(class='personal-wrapper')
+      div(class='personal') PERSONAL LINKS
+      div(class='personal-links-wrapper')
+        a(href=`/users/${locals.user.id}`, class='my-questions', class='link') My Profile
+  div(class='job-wrapper')
+    div(class='job') FIND A JOB
+    div(class='job-links-wrapper')
+      a(href="https://www.indeed.com/q-Bartender-jobs.html", class='job', class="link") Jobs

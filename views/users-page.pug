@@ -9,8 +9,8 @@ block content
     include sidebar
     div(class='users-wrapper')
       div(class='users-h2')
-        h1 Users
+        h1(class='title') Users
       div(class='users-container')
         each user in users
           div(class='user-divs')
-            a(href=`/users/${user.id}` class='user')= user.userName
+            a(href=`/users/${user.id}` class='user grab')= user.userName
