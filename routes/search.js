@@ -1,29 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const {
-  asyncHandler,
-  csrfProtection,
-  cocktailQNotFoundError,
-} = require("./utils");
+const { asyncHandler, csrfProtection, cocktailNotFoundError } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth");
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 const { CocktailQ, CocktailA, User, Vote } = require('../db/models');
 
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-    const questions = await CocktailQ.findAll({
-        include: [User, CocktailA, Vote]
-    })
-    res.render('search', {
-        questions,
-        csrfToken: req.csrfToken()
-    })
-}))
-
+/* POST pulls up a page with the search results */
 router.post('/', csrfProtection, asyncHandler(async (req, res) => {
     const { query } = req.body;
-    console.log('this is query', query)
     const questions = await CocktailQ.findAll({
         include: User,
         where: {
@@ -31,11 +17,11 @@ router.post('/', csrfProtection, asyncHandler(async (req, res) => {
                 [Op.substring] : `%${query}%`
             }, 
         },      
-    })
+    });
     res.render('search', {
         questions,
         csrfToken: req.csrfToken()
-    })
-}))
+    });
+}));
 
 module.exports = router;

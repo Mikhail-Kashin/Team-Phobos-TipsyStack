@@ -65,56 +65,42 @@ const registrationValidators = [
     }),
 ];
 
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
+/* GET pulls up a login form */
 router.get('/login', csrfProtection, asyncHandler( async (req, res) =>{
   res.render('login-form', {
     csrfToken: req.csrfToken(),
   });
 }));
 
+/* POST attempts to log in with given credentials */
 router.post('/login', csrfProtection, loginValidators, asyncHandler( async(req, res) =>{
   const {
     email,
     password
   } = req.body;
-
   let errors = [];
   const validatorErrors = validationResult(req);
-
   if (validatorErrors.isEmpty()) {
-
     const user = await User.findOne({ where: { email } });
-
     if (user !== null) {
-
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-
       if (passwordMatch) {
-
         return loginUser(req, res, user);
-
-      }
-    }
+      };
+    };
     errors.push('Login failed for the provided email address and password');
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
-  }
-
-  res.render('login-form', {
-    email,
-    errors,
-    csrfToken: req.csrfToken(),
-  });
+  };
+  res.render('login-form', { email, errors, csrfToken: req.csrfToken() });
 }));
 
+/* POST logs the current user out of the app. */
 router.post('/logout', (req, res) =>{
   logoutUser(req, res);
 });
 
+/* GET pulls up the signup form. */
 router.get('/signup', csrfProtection, (req, res)=>{
   const user = User.build();
   res.render('sign-up', {
@@ -123,23 +109,18 @@ router.get('/signup', csrfProtection, (req, res)=>{
   })
 });
 
+/* POST creates a new user with the credentials from the signup form. */
 router.post('/signup', csrfProtection, registrationValidators, asyncHandler(async(req, res) =>{
   const {
     userName,
     email,
     password
   } = req.body;
-
-  // let errors = [];
-
   const user = User.build({
     email,
     userName
-  })
-
-
+  });
   const validatorErrors = validationResult(req);
-
   if (validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
@@ -152,27 +133,28 @@ router.post('/signup', csrfProtection, registrationValidators, asyncHandler(asyn
       errors,
       csrfToken: req.csrfToken(),
     });
-  }
+  };
 }));
 
+/* POST signs in a 'demo' user to show the apps functionality. */
 router.post('/demo', async (req, res) => {
   const user = await User.findOne({ where: { email: 'Demo@demo.com'}})
-  console.log(user)
   return loginUser(req, res, user);
-})
+});
 
+/* GET pulls up list of all users. */
 router.get('/', asyncHandler(async (req, res) => {
   const users = await User.findAll();
   res.render('users-page', {users});
 }));
 
+/* GET pulls up a specific user, as well as their associated questions and answers. */
 router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
   const id = req.params.id;
   const user = await User.findOne({where: {id},
      include: [CocktailQ,
      {model: CocktailA, include: CocktailQ}]
     });
-  console.log('this is the user', user.CocktailAs[0])
   res.render('user-profile', {user})
 }));
 

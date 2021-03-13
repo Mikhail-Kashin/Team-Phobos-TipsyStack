@@ -6,8 +6,8 @@ append head
 block content
   div(class='answerpg-wrapper')
     include navbar
-    +validationErrorSummary(errors)
     div(class='form-wrapper')
+      +validationErrorSummary(errors)
       div(class='header')
         h1 Update your Cocktail-Q
         form(action=`/CocktailQs/${cocktailq.id}/edit` method='post' class='form')
@@ -16,6 +16,6 @@ block content
             div(class='label-div')
               label(for='question' class='labels') Cocktail-Q Body:
             div(class='textarea-div')
-              textarea(name='question')
+              textarea(name='question')=cocktailq.question
           div(class='form-btn')
             button(type='submit' class='btn') Update

@@ -18,11 +18,9 @@
   padding-right: 10px;
 }
 
-.form-data{
-  background-color:white
-}
-
-.form-inputs{
+.form-data,
+.form-inputs,
+.wrapper-login{
   background-color:white
 }
 
@@ -36,10 +34,6 @@
   padding: 24px;
   text-align: center;
   max-width: 400px;
-}
-
-.wrapper-login{
-  background-color:white;
 }
 
 .login-logo{
@@ -66,4 +60,18 @@
   display: inline-block;
   position: relative;
   top: -40px;
+}
+.alert,
+.alert-p,
+.alert-li,
+.alert-ul{
+  background-color: #f8d7da;
+  margin: 10px;
+  color: red;
+  font-weight: bold;
+  align-self: center;
+}
+
+.alert{
+  border: 3px ridge darkred;
 }
