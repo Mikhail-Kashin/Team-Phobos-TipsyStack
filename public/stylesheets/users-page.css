@@ -11,11 +11,32 @@
     grid-column: 2;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-left: 50px;
+}
+
+.user-wrapper{
+  justify-content: flex-start;
+  height: 650px;
+}
+
+.qAndA{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 500px;
+    width: 1200px;
+}
+
+.questions{
+    grid-column: 1;
+}
+
+answers{
+    grid-column: 2;
 }
 
 .user-container{
-    grid-row: 2;
-    grid-column: 2;
+    /* grid-row: 2;
+    grid-column: 2; */
     overflow-y: auto;
     height: 400px;
     width: 600px;
@@ -62,13 +83,13 @@
     width: 500px;
 }
 
-.answers{
-    display: flex;
+/* .answers{
+    display: grid;
     justify-content: center;
     grid-row: 2;
     grid-column: 3;
     flex-direction: column;
-}
+} */
 
 .user:hover{
     background-blend-mode:luminosity;
