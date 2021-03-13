@@ -16,6 +16,8 @@
   padding: 10px;
   background-image: url("https://user-images.githubusercontent.com/75585372/110873612-20b45700-82a0-11eb-9f59-a49269eb1a6e.jpg");
   background-size: 100%;
+  width: 200px;
+  box-sizing: border-box;
 }
 
 .home{

@@ -1,4 +1,10 @@
-.users-wrapper{
+.usersPg-wrapper{
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    /* grid-template-columns: 1fr 2fr 2fr; */
+}
+
+.users-wrapper, .user-wrapper {
     display: flex;
     justify-content: center;
     grid-row: 2;
@@ -7,17 +13,33 @@
     flex-wrap: wrap;
 }
 
-.usersPg-wrapper{
-    display: grid;
-    grid-template-rows: 80px 1fr;
+.user-container{
+    grid-row: 2;
+    grid-column: 2;
+    overflow-y: auto;
+    height: 400px;
+    width: 600px;
 }
 
 .users-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: wrap;
+    grid-row: 2;
+    grid-column: 2;
+    justify-content: center;
+    width: 1200px;
 }
 
-.user-divs{
+.users-h2{
+    width: 1200px;
+    justify-content: flex-start;
+}
+
+.title{
+    margin-left: 50px;
+}
+
+.user{
     display: flex;
     font-size: 20px;
     font-weight:bolder;
@@ -37,9 +59,23 @@
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
+    width: 500px;
 }
 
-.user-divs:hover{
+.answers{
+    display: flex;
+    justify-content: center;
+    grid-row: 2;
+    grid-column: 3;
+    flex-direction: column;
+}
+
+.user:hover{
     background-blend-mode:luminosity;
     color: midnightblue;
+}
+
+.grab {
+  width: 300px;
+  justify-content: center;
 }
