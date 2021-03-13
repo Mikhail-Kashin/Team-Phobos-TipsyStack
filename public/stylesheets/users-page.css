@@ -1,7 +1,7 @@
 .usersPg-wrapper{
     display: grid;
     grid-template-rows: 80px 1fr;
-    /* grid-template-columns: 1fr 2fr 2fr; */
+    grid-template-columns: 200px 1fr;
 }
 
 .users-wrapper, .user-wrapper {
