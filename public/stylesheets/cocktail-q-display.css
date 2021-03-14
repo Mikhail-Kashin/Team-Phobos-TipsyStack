@@ -21,11 +21,10 @@
     margin: 5px;
     box-sizing: border-box;
     float: left;
-    width: 600px;
+    width: 990px;
     height: 20px;
-    overflow: hidden;
     text-align: center;
-    align-items: center;
+    align-items: baseline;
     background-image: url('../images/logo.png');
     background-size:cover;
     background-repeat: no-repeat;
@@ -38,6 +37,11 @@
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
+                  overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+width: 0px
 }
 
 
@@ -119,7 +123,7 @@ width: 100%;
     margin: 20px;
     border-radius: 3px;
     align-self: flex-end;
-    width: 610px;
+    width: 1000px;
 }
 
 .created_by {

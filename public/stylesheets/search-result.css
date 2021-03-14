@@ -19,9 +19,8 @@
     margin: 5px;
     box-sizing: border-box;
     float: left;
-    width: 600px;
+    width: 990px;
     height: 10px;
-    overflow: hidden;
     text-align: center;
     align-items: center;
     background-image: url('../images/logo.png');
@@ -36,7 +35,14 @@
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
+    overflow: scroll;
+    overflow-x: hidden;
 }
+::-webkit-scrollbar {
+width: 0px
+}
+        
+
 
 
 .cocktail_q:hover{
@@ -105,7 +111,7 @@ width: 100%;
     margin: 20px;
     border-radius: 3px;
     align-self: center;
-    width: 610px;
+    width: 1000px;
 }
 
 .created_by {
