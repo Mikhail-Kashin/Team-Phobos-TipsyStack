@@ -1,16 +1,18 @@
 
 div(class='sidebar')
-  a(href="/CocktailQs", class='home', class='link') <span class='home-button'>Home
-  div(class='public-wrapper')
-    div(class='public') PUBLIC
-    div(class='public-links-wrapper')
-      a(href="/users", class='users', class="link") Users
-  if locals.authenticated
-    div(class='personal-wrapper')
-      div(class='personal') PERSONAL LINKS
-      div(class='personal-links-wrapper')
-        a(href=`/users/${locals.user.id}`, class='my-questions', class='link') My Profile
-  div(class='job-wrapper')
-    div(class='job') FIND A JOB
-    div(class='job-links-wrapper')
-      a(href="https://www.indeed.com/q-Bartender-jobs.html", class='job', class="link") Jobs
+  div(class='sidebar-links')
+    a(href="/CocktailQs", class='home link') 
+      span(class='home-button') Home
+    div(class='public-wrapper')
+      div(class='public') PUBLIC
+      div(class='public-links-wrapper')
+        a(href="/users", class='users', class="link") Users
+    if locals.authenticated
+      div(class='personal-wrapper')
+        div(class='personal') PERSONAL LINKS
+        div(class='personal-links-wrapper')
+          a(href=`/users/${locals.user.id}`, class='my-questions', class='link') My Profile
+    div(class='job-wrapper')
+      div(class='job') FIND A JOB
+      div(class='job-links-wrapper')
+        a(href="https://www.indeed.com/q-Bartender-jobs.html", class='my-job link') Jobs
