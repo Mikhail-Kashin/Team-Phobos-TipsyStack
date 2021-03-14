@@ -3,10 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    /* flex-flow: wrap; */
-
-
 }
+
 .cocktail_q{
     font-weight:bolder;
     display: flex;
@@ -37,13 +35,14 @@
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
-                  overflow: scroll;
-overflow-x: hidden;
+                  
+    overflow: scroll;
+    overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
 width: 0px
 }
-
 
 .cocktail_q:hover{
     background-blend-mode:luminosity;
@@ -73,25 +72,14 @@ align-self: center;
 width: 100%;
 }
  .created-at{
-    /* font-weight: bolder; */
     display: flex;
     justify-content: center;
     color: midnightblue;
     font-size: 12px;
-    /* width: 30px; */
-    /* border: 5px ridge #0095ff; */
     border-radius: 3px;
-    /* padding: 30px; */
     margin: 10px;
-    /* margin: 5px; */
-    /* box-sizing: border-box; */
     overflow: hidden;
-    /* text-align: center; */
-    /* align-self: center; */
-    /* align-items: center; */
 }
-
-
 
 .h2_container{
     display: flex;
@@ -104,7 +92,6 @@ width: 100%;
 				  -1px -1px 0 #0095ff;
 }
 
-
 .cocktail_q_wrapper {
   display: grid;
   grid-template-columns: 1fr 9fr;
@@ -115,10 +102,7 @@ width: 100%;
 
 .most_recent_questions{
     display: flex;
-    /* width: 500px; */
-    /* height: 500px; */
     border: 4px ridge #0095ff;
-    /* background-color: black; */
     flex-flow: column;
     margin: 20px;
     border-radius: 3px;
