@@ -166,7 +166,6 @@ width: 100%;
     text-decoration: none;
     font-weight: bold;
 }
-
 #btn_show_all:hover {
     transform: translateX(0.15em);
     text-decoration: none;
