@@ -45,7 +45,6 @@
   color: lightsteelblue
 }
 
-
 .users,
 .my-questions,
 .my-job{
@@ -58,8 +57,6 @@
 				  1px -1px 0 #0095ff,
 				  -1px -1px 0 #0095ff;
 }
-
-
 
 .personal,
 .job{
@@ -91,7 +88,6 @@
 .link:hover{
   color: darkblue;
 }
-
 
 .sidebar-links{
   position: relative;
