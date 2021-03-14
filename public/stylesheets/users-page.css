@@ -30,13 +30,11 @@
     grid-column: 1;
 }
 
-answers{
+.answers{
     grid-column: 2;
 }
 
 .user-container{
-    /* grid-row: 2;
-    grid-column: 2; */
     overflow-y: auto;
     height: 400px;
     width: 600px;
@@ -52,7 +50,7 @@ answers{
 }
 
 .users-h2{
-    width: 1200px;
+    width: 100%;
     justify-content: flex-start;
 }
 
@@ -82,14 +80,6 @@ answers{
 				  -1px -1px 0 #0095ff;
     width: 500px;
 }
-
-/* .answers{
-    display: grid;
-    justify-content: center;
-    grid-row: 2;
-    grid-column: 3;
-    flex-direction: column;
-} */
 
 .user:hover{
     background-blend-mode:luminosity;
