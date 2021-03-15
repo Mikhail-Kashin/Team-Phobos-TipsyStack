@@ -4,11 +4,14 @@
   margin-top: 10%;
   align-items: center;
   grid-row: 2;
+  grid-column: 2;
+  justify-self: center;
 }
 
 .signUpPageWrapper{
   display: grid;
   grid-template-rows: 80px 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
 .form-label{
@@ -85,5 +88,3 @@
 .alert{
   border: 3px ridge darkred;
 }
-
-  
