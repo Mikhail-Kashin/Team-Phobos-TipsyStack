@@ -92,9 +92,11 @@
 .public-wrapper,
 .personal-wrapper,
 .job-wrapper{
-  margin: 25px;
+  margin: 20px;
   margin-left: 5px;
-  margin-right: 7px
+  margin-right: 7px;
+  padding: 5px;
+  padding-right: 0;
 }
 
 .public-links-wrapper,
@@ -108,6 +110,9 @@
 .users, .my-job{
   margin-top: 1em;
   width: 100%;
+  padding: 5px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .active{
