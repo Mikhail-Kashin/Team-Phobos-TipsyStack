@@ -6,32 +6,32 @@ img{
 }
 
 .navbar {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  height: 65px;
+  display: flex;
+  /* grid-template-columns: 1fr 3fr 1fr; */
+  height: 50px;
   width: 100%;
-  grid-row: 1;
+  /* grid-row: 1;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 3; */
   background-color: white;
   border: 1px solid darkgray;
   border-top: 4px solid darkblue;
   position: fixed;
   margin-top: 0;
+  justify-content: center;
 }
 
 .search-bar{
-  grid-column: 2;
+  /* grid-column: 2; */
   background-color: white;
   margin: 5px;
-  width: 200px;
+  width: 50vw;
   border: 3px solid darkblue;
-  border-radius: 5px 0 0 5px;
-  border-right: 0;
+  border-radius: 5px;
+  height: 100%;
 }
 
 .user-btn-div{
-  grid-column: 3;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ img{
 }
 
 .user-btn{
-  margin: 20px;
+  margin: 15px;
   background-color: darkblue;
   color: white;
   border-radius: 5px;
@@ -77,7 +77,7 @@ img{
   border-radius: 5px;
   text-align: center;
   border-radius: 0 5px 5px 0;
-  margin-left: -5px;
+  margin-left: 15px;
 }
 
 .searchbar_form{
@@ -85,7 +85,26 @@ img{
 }
 
 .sbar-and-btn{
-  margin-top: 16px;
   background-color: white;
   margin-right: 4px;
+  height: 60%;
+}
+
+.logo-image{
+  background-image: url('https://user-images.githubusercontent.com/74081636/120671525-7a6f8c00-c45f-11eb-9387-bd2a27d5a4a3.PNG');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 12em;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  margin-right: 1em;
+}
+
+.logo-image:hover{
+  background-image: url('https://user-images.githubusercontent.com/74081636/120671530-7cd1e600-c45f-11eb-85a7-f34c1b198290.PNG');
+}
+
+.user-btn-a:hover{
+  background-color: #DCDCDC;
 }
