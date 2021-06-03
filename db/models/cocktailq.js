@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const CocktailQ = sequelize.define('CocktailQ', {
+    title: DataTypes.STRING(70),
     question: DataTypes.TEXT,
     userId: DataTypes.INTEGER
   }, {});
