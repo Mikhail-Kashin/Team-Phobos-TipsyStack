@@ -1,105 +1,124 @@
 'use strict';
 
+const faker = require("faker")
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-   
+
     return queryInterface.bulkInsert('CocktailQs', [
     {
-      question: "What’s the difference between liquor and liqueur?",
+      title: "What’s the difference between liquor and liqueur?",
+      question: faker.lorem.paragraph(),
       userId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-    question: "What’s the difference between ABV and proof ?",
+    title: "What’s the difference between ABV and proof ?",
+    question: faker.lorem.paragraph(),
     userId: 3,
     createdAt: new Date(),
     updatedAt: new Date(),
     },
       {
-        question: "What does it mean to order a drink ‘neat’, ‘up’ or ‘on the rocks’?", userId: 2, 
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        question: "What does a highball or lowball drink mean?",
-        userId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        question: "Do different glasses serve a purpose, or are they just for looks?",
-        userId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        question: "Do I need to refrigerate alcohol?",
-        userId: 4,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        question: "Is it safe to consume egg whites in cocktails?",
+        title: "What does it mean to order a drink ‘neat’, ‘up’ or ‘on the rocks’?",
+        question: faker.lorem.paragraph(),
         userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "Is it ‘whiskey’ or ‘whisky?",
+        title: "What does a highball or lowball drink mean?",
+        question: faker.lorem.paragraph(),
+        userId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: "Do different glasses serve a purpose, or are they just for looks?",
+        question: faker.lorem.paragraph(),
+        userId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        title: "Do I need to refrigerate alcohol?",
+        question: faker.lorem.paragraph(),
+        userId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Is it safe to consume egg whites in cocktails?",
+        question: faker.lorem.paragraph(),
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Is it ‘whiskey’ or ‘whisky?",
+        question: faker.lorem.paragraph(),
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "Should I add water to whiskey?",
+        title: "Should I add water to whiskey?",
+        question: faker.lorem.paragraph(),
         userId: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        question: "What are bitters?",
+        title: "What are bitters?",
+        question: faker.lorem.paragraph(),
         userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "What is a twist?",
+        title: "What is a twist?",
+        question: faker.lorem.paragraph(),
         userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "What is a ‘chaser’ or a ‘back’?",
+        title: "What is a ‘chaser’ or a ‘back’?",
+        question: faker.lorem.paragraph(),
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "Should you stir or shake a martini?",
+        title: "Should you stir or shake a martini?",
+        question: faker.lorem.paragraph(),
         userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "What does muddle mean?",
+        title: "What does muddle mean?",
+        question: faker.lorem.paragraph(),
         userId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        question: "What’s a nightcap?",
+        title: "What’s a nightcap?",
+        question: faker.lorem.paragraph(),
         userId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       }
 
 ]);
-    
+
   },
 
   down: (queryInterface, Sequelize) => {
-    
+
     return queryInterface.bulkDelete('CocktailQs', null, {
       truncate:true
    });
