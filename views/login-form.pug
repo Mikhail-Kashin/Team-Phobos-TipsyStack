@@ -3,11 +3,13 @@ append head
   link(rel="stylesheet" href="/stylesheets/loginForm.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
   link(rel="stylesheet" href="/stylesheets/navbar.css")
+ 
 include form-creator
 block content
   div(class='loginPageWrapper')
     include navbar
     include sidebar
+
     div(class='formDiv')
       if errors
         div(class='alert alert-danger' role='alert')
