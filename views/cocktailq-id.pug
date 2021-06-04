@@ -11,13 +11,17 @@ block content
     include navbar
     include sidebar
     div(class='question-and-answer-wrapper')
+      div(class='q-title-container')
+        p(class='q-title')=cocktailq.title
+        a(href=`/CocktailQs/new` class="btn-anchor")
+          button(class='btn') Post A Cocktail-Q
+      div(class='created-q-wrapper')
+        p(class='created-at') Posted: #{cocktailq.createdAt}
       div(class='question-div')
         div(class='specific-question-wrapper')
           div(class='question-and-buttons')
             p(class='specific-question')=cocktailq.question
-            div(class='created-q-wrapper')
-              p(class='created-by') Created by user: #{cocktailq.User.userName}
-              p(class='created-at') Posted: #{cocktailq.createdAt}
+
             if(user && user.id === cocktailq.userId)
               div(class='edit-and-delete-btns')
                 a(class= 'fakebtn' href=`/CocktailQs/${cocktailq.id}/edit`)
@@ -25,9 +29,12 @@ block content
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/delete`)
                   input(type='hidden' name='_csrf' value=csrfToken)
                   button(class='change-btn' type='submit') Delete
-          a(href=`/CocktailQs/new` class="btn-anchor")
-            button(class='btn') Post A Cocktail-Q
-      div(class='answers-wrapper') 
+      p(class='created-by') Created by user: #{cocktailq.User.userName}
+      if(cocktailq.CocktailAs.length === 1)
+        div(class='answers-heading') 1 Answer
+      if(cocktailq.CocktailAs.length > 1)
+        div(class='answers-heading') #{cocktailq.CocktailAs.length} Answers
+      div(class='answers-wrapper')
         if (cocktailq.CocktailAs.length === 0)
           div(class='no-answers')
             div(class='no-answers-text') This Cocktail-Q has not been answered. Please input a Cocktail-A below to share your knowledge!
