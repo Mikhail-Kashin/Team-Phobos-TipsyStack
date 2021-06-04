@@ -6,13 +6,17 @@ div(class='sidebar')
     div(class='public-wrapper')
       div(class='public') PUBLIC
       div(class='public-links-wrapper')
-        A(href="/CocktailQs/all", class='users', class='link') Questions
+        a(href="/CocktailQs/all", class='users', class='link') Questions
         a(href="/users", class='users', class="link") Users
     if locals.authenticated
       div(class='personal-wrapper')
         div(class='personal') PERSONAL LINKS
         div(class='personal-links-wrapper')
           a(href=`/users/${locals.user.id}`, class='my-questions', class='link') My Profile
+          a(href='https://github.com/arb5433', class='my-questions', class='link') Adam Bailey
+          a(href='https://github.com/Mikhail-Kashin', class='my-questions', class='link') Mikhail Kashin 
+          a(href='https://github.com/nishinelson', class='my-questions', class='link') Nishi Nelson
+          a(href='https://github.com/tristan-88', class='my-questions', class='link') Tristan San Juan
     div(class='job-wrapper')
       div(class='job') FIND A JOB
       div(class='job-links-wrapper')
