@@ -4,14 +4,14 @@
 }
 
 .btn {
-  margin: 10px;
+  /* margin: 10px; */
   background-color: #0095ff;
   color: white;
   border: 1px solid black;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
-  padding: 5px;
+  padding: 10.4px;
 }
 .btn:hover{
   background-color: darkblue;

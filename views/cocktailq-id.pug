@@ -1,5 +1,5 @@
 extends layout
-
+include form-creator
 append head
   link(rel="stylesheet" href="/stylesheets/qAndADisplay.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
@@ -11,13 +11,17 @@ block content
     include navbar
     include sidebar
     div(class='question-and-answer-wrapper')
+      div(class='q-title-container')
+        p(class='q-title')=cocktailq.title
+        a(href=`/CocktailQs/new` class="btn-anchor")
+          button(class='btn') Post A Cocktail-Q
+      div(class='created-q-wrapper')
+        p(class='created-at') Posted: #{cocktailq.createdAt}
       div(class='question-div')
         div(class='specific-question-wrapper')
           div(class='question-and-buttons')
             p(class='specific-question')=cocktailq.question
-            div(class='created-q-wrapper')
-              p(class='created-by') Created by user: #{cocktailq.User.userName}
-              p(class='created-at') Posted: #{cocktailq.createdAt}
+
             if(user && user.id === cocktailq.userId)
               div(class='edit-and-delete-btns')
                 a(class= 'fakebtn' href=`/CocktailQs/${cocktailq.id}/edit`)
@@ -25,34 +29,51 @@ block content
                 form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/delete`)
                   input(type='hidden' name='_csrf' value=csrfToken)
                   button(class='change-btn' type='submit') Delete
-          a(href=`/CocktailQs/new` class="btn-anchor")
-            button(class='btn') Post A Cocktail-Q
-      div(class='answers-wrapper') 
+      p(class='created-by' id='q-post') Asked by user: #{cocktailq.User.userName}
+      if(cocktailq.CocktailAs.length === 1)
+        div(class='answers-heading') 1 Answer
+      if(cocktailq.CocktailAs.length > 1)
+        div(class='answers-heading') #{cocktailq.CocktailAs.length} Answers
+      div(class='answers-wrapper')
         if (cocktailq.CocktailAs.length === 0)
           div(class='no-answers')
             div(class='no-answers-text') This Cocktail-Q has not been answered. Please input a Cocktail-A below to share your knowledge!
         each cocktailA in cocktailq.CocktailAs
           div(class='answer-div')
-            p(class='answer-p')=cocktailA.answer
+            div(class='votes-wrapper')
+              div(class='upvote-div')
+                img(src="https://i.imgur.com/dMSKmqL.png", alt="Upvote" class='upvote vote-icons' id=`${cocktailA.id}/upvote`)
+              div(class='vote-display-div')
+                div(id=`vote-${cocktailA.id}` class='vote-display')=votes[cocktailA.id]
+              div(class='downvote-div')
+                img(src="https://i.imgur.com/oxj9Onn.png", alt="Downvote" class='downvote vote-icons' id=`${cocktailA.id}/downvote`)
             div(class='lower-answer-wrapper')
-              div(class='votes-wrapper')
-                div(class='upvote-div')
-                  img(src="https://user-images.githubusercontent.com/74081636/110870195-fbbce580-8299-11eb-87c8-3cc27983ff5f.jpeg", alt="Upvote" class='upvote vote-icons' id=`${cocktailA.id}/upvote`)
-                div(class='vote-display-div')
-                  div(id=`vote-${cocktailA.id}` class='vote-display')=votes[cocktailA.id]
-                div(class='downvote-div')
-                  img(src="https://user-images.githubusercontent.com/74081636/110870508-90bfde80-829a-11eb-8e96-e4f277ea245a.jpeg", alt="Downvote" class='downvote vote-icons' id=`${cocktailA.id}/downvote`)
+              p(class='answer-p')=cocktailA.answer
               div(class='created-at-wrapper')
-                p(class='created-by') Created by user: #{cocktailA.User.userName}
-                p(class='created-at') Posted: #{cocktailA.createdAt}
-            if(user && user.id === cocktailA.userId)
-              div(class='edit-and-delete-btns')
-                a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
-                  button(class='change-btn', type='submit') Edit
-                form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}/delete`)
-                  input(type='hidden' name='_csrf' value=csrfToken)
-                  button(class='change-btn', type='submit') Delete
-        div(class='back-and-post')
+                div(class='post-div')
+                  p(class='created-at a-post') Posted: #{cocktailA.createdAt}
+                  p(class='created-by') Answered by user: #{cocktailA.User.userName}
+              if(user && user.id === cocktailA.userId)
+                div(class='edit-and-delete-btns')
+                  a(class='fakebtn', href=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}`)
+                    button(class='change-btn', type='submit') Edit
+                  form(class='fakebtn' method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs/${cocktailA.id}/delete`)
+                    input(type='hidden' name='_csrf' value=csrfToken)
+                    button(class='change-btn', type='submit') Delete
+      div(class='answer-form-header') Your Answer
+      //- +validationErrorSummary(errors)
+      div(class='form-wrapper')
+        div(class='header')
+          form(method='post' action=`/CocktailQs/${cocktailq.id}/CocktailAs` class='form')
+            input(type='hidden' name="_csrf" value=csrfToken)
+            div(class='inner-form-wrapper')
+              //- div(class='label-div')
+                label(for="answer" class='labels') Cocktail-A Body:
+              div(class='textarea-div')
+                textarea(name="answer" value="" placeholder="Write your answer here")
+            div(class='form-btn')
+              button(class="btn" type="submit") Post Your Answer
+        //- div(class='back-and-post')
           div(class='btn-div1')
             a(href=`/CocktailQs/${cocktailq.id}/CocktailAs`)
               button(class='btn') Post A Cocktail-A
