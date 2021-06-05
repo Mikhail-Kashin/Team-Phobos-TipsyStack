@@ -11,16 +11,18 @@ block content
     include sidebar
     div(class="cocktail_q_container")
             div(class="h2_container")
-                h2 Recent Cocktail-Qs
+                h2(class="h2-title") Recent Cocktail-Qs
                 div(class="container_btn")
                     a(href='/CocktailQs/new')
                         button( type='submit' class='btn' id="ask_q_btn") Ask a new Cocktail-Q
             div(class="container_questions")
                 each cocktailq in cocktailqs
                     div(class='most_recent_questions')
-                        a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.question
+                        a(href=`/CocktailQs/${cocktailq.id}` class='cocktail_q')= cocktailq.title
+                    div(class="created")
                         p(class="created_by") Created by user: #{cocktailq.User.userName}
                         p(class='created-at') Posted: #{cocktailq.createdAt}
+            div(class="border-bottom")
             div(class="btn_show_all")
                 a(href='/CocktailQs/all')
                     button(type='submit' class='btn' id='btn_show_all') Show All
