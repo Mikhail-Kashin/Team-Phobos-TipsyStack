@@ -51,8 +51,13 @@
 }
 
 .users-h2{
-    width: 100%;
-    justify-content: flex-start;
+    display: flex;
+    color: white;
+    background-color: transparent;
+    text-shadow: -1px 1px 2px #0095ff, 1px 1px 2px #0095ff, 1px -1px 0 #0095ff, -1px -1px 0 #0095ff;
+    margin-left: 5em;
+    padding: 1rem;
+    justify-content: space-between;
 }
 
 .title{
@@ -90,4 +95,7 @@
 .grab {
   width: 300px;
   justify-content: center;
+  color: #0077cc;
+  font-size: 20px;
+  text-decoration: none;
 }
