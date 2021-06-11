@@ -3,13 +3,11 @@ append head
   link(rel="stylesheet" href="/stylesheets/loginForm.css")
   link(rel="stylesheet" href="/stylesheets/sidebar.css")
   link(rel="stylesheet" href="/stylesheets/navbar.css")
- 
 include form-creator
 block content
   div(class='loginPageWrapper')
     include navbar
     include sidebar
-
     div(class='formDiv')
       if errors
         div(class='alert alert-danger' role='alert')
@@ -17,12 +15,12 @@ block content
             ul(class='alert-ul')
               each error in errors
                 li(class='alert-li')= error
-      form(action='/users/login', method='post', class='login-form')
-        img(src="https://user-images.githubusercontent.com/75585372/110696295-e6bc5580-81b8-11eb-85c9-fa60ffc936cb.png", class="login-logo")
-        input(type='hidden' name='_csrf' value=csrfToken)
-        +formCreator('email', 'Email Address:', '', 'email', 'Enter Email')
-        +formCreator('password', 'Password:', '', 'password', 'Enter Password')
-        div(class='wrapper-login')
+      div(class='login-form')
+        form(action='/users/login', method='post')
+          img(src="https://user-images.githubusercontent.com/75585372/110696295-e6bc5580-81b8-11eb-85c9-fa60ffc936cb.png", class="login-logo")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          +formCreator('email', 'Email Address:', '', 'email', 'Enter Email')
+          +formCreator('password', 'Password:', '', 'password', 'Enter Password')
           button(type='submit' class='btn') Log in
-      form(action='/users/demo', method='post', class='demo-form')
-        button(type='submit' class='btn' id='demoBtn') Demo Log in
+        form(action='/users/demo', method='post', class='demo-form')
+          button(type='submit' class='btn' id='demoBtn') Demo Log in

@@ -11,7 +11,7 @@
     grid-column: 2;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 50px;
+    margin-left: 10em;
 }
 
 .user-wrapper{
@@ -23,7 +23,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 500px;
-    width: 1200px;
+    width: 1000px;
+    margin-left: 100px;
 }
 
 .questions{
@@ -35,9 +36,8 @@
 }
 
 .user-container{
-    overflow-y: auto;
-    height: 400px;
-    width: 600px;
+    /* margin-left: 75%; */
+
 }
 
 .users-container{
@@ -51,8 +51,13 @@
 }
 
 .users-h2{
-    width: 100%;
-    justify-content: flex-start;
+    display: flex;
+    color: white;
+    background-color: transparent;
+    text-shadow: -1px 1px 2px #0095ff, 1px 1px 2px #0095ff, 1px -1px 0 #0095ff, -1px -1px 0 #0095ff;
+    margin-left: 5em;
+    padding: 1rem;
+    justify-content: space-between;
 }
 
 .title{
@@ -63,22 +68,22 @@
     display: flex;
     font-size: 20px;
     font-weight:bolder;
-    border:  3px ridge #0095ff;
+    /* border:  3px rige #0095ff; */
     padding: 20px;
     margin: 15px;
     border-radius: 3px;
     text-decoration: none;
-    color: white;
-    background-image: url('../images/logo.png');
+    color: #0095FF;
+    /* background-image: url('../images/logo.png'); */
     background-size:cover;
     background-repeat: no-repeat;
     background-position:center;
     background-blend-mode:soft-light;
     background-color: transparent;
-    text-shadow: -1px 1px 2px #0095ff,
+    /* text-shadow: -1px 1px 2px #0095ff,
 				  1px 1px 2px #0095ff,
 				  1px -1px 0 #0095ff,
-				  -1px -1px 0 #0095ff;
+				  -1px -1px 0 #0095ff; */
     width: 500px;
 }
 
@@ -90,4 +95,7 @@
 .grab {
   width: 300px;
   justify-content: center;
+  color: #0077cc;
+  font-size: 20px;
+  text-decoration: none;
 }

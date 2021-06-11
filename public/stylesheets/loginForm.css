@@ -27,6 +27,16 @@
   background-color:white
 }
 
+.wrapper-login{
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
+}
+
+#demoBtn{
+  margin-top: 10px;
+}
+
 .login-form{
   display: inline-block;
   position: relative;
@@ -59,11 +69,7 @@
   margin-bottom: 5px;
 }
 
-#demoBtn{
-  display: inline-block;
-  position: relative;
-  top: -40px;
-}
+
 .alert,
 .alert-p,
 .alert-li,
