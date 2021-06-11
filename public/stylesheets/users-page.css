@@ -11,7 +11,7 @@
     grid-column: 2;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 50px;
+    margin-left: 10em;
 }
 
 .user-wrapper{
@@ -23,7 +23,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 500px;
-    width: 1200px;
+    width: 1000px;
+    margin-left: 100px;
 }
 
 .questions{
@@ -35,9 +36,8 @@
 }
 
 .user-container{
-    overflow-y: auto;
-    height: 400px;
-    width: 600px;
+    /* margin-left: 75%; */
+
 }
 
 .users-container{
