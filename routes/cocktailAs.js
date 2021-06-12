@@ -12,19 +12,21 @@ const answerValidators = [
   ];
 
 /* GET pulling up the new answer form. */
-cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
-    const qId = req.params.qId
-    res.render('answer', {qId, csrfToken: req.csrfToken()});
-}));
+// cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
+//     const qId = req.params.qId
+//     res.render('answer', {qId, csrfToken: req.csrfToken()});
+// }));
 
 /* POST posting a new answer. */
-cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(req, res)=>{
+cocktailARouter.post('/', requireAuth, csrfProtection, answerValidators, asyncHandler(async(req, res)=>{
+    const qId = req.params.id;
+    console.log(qId, "===================================")
     const {
         answer
     } = req.body;
     const validatorErrors = validationResult(req);
     if(validatorErrors.isEmpty()){
-         const cocktailA = await CocktailA.create({ cocktailQId: req.params.qId, answer, userId: res.locals.user.id})
+         const cocktailA = await CocktailA.create({ cocktailQId: req.params.id, answer, userId: res.locals.user.id})
         res.redirect(`/CocktailQs/${cocktailA.cocktailQId}`);
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
