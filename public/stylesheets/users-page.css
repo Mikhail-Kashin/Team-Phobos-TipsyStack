@@ -1,7 +1,14 @@
 .usersPg-wrapper{
     display: grid;
+    grid-template-columns: 25vw 75vw;
     grid-template-rows: 80px 1fr;
-    grid-template-columns: 200px 1fr;
+    height: 100%;
+    width: auto;
+}
+
+.usersPage-wrapper{
+    grid-column: 2;
+    grid-row: 2;
 }
 
 .users-wrapper, .user-wrapper {
@@ -11,7 +18,6 @@
     grid-column: 2;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 10em;
 }
 
 .user-wrapper{
