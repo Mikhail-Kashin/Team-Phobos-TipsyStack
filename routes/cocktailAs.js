@@ -12,13 +12,15 @@ const answerValidators = [
   ];
 
 /* GET pulling up the new answer form. */
-cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
-    const qId = req.params.qId
-    res.render('answer', {qId, csrfToken: req.csrfToken()});
-}));
+// cocktailARouter.get('/', requireAuth, csrfProtection, asyncHandler(async(req, res)=>{
+//     const qId = req.params.qId
+//     res.render('answer', {qId, csrfToken: req.csrfToken()});
+// }));
 
 /* POST posting a new answer. */
-cocktailARouter.post('/', csrfProtection, answerValidators, asyncHandler(async(req, res)=>{
+cocktailARouter.post('/', requireAuth, csrfProtection, answerValidators, asyncHandler(async(req, res)=>{
+    const qId = req.params.qId;
+    console.log(qId, "===================================")
     const {
         answer
     } = req.body;
