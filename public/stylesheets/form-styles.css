@@ -27,6 +27,14 @@
     margin-bottom: 10px;
 }
 
+.title-input{
+    height: 20px;
+    width: 97%;
+    border-radius: 3px;
+    border: 1px solid grey;
+    margin-top: 15px;
+}
+
 .btn {
     margin-left: 0;
     margin-top: 35px;

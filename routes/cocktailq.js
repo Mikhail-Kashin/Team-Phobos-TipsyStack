@@ -6,6 +6,9 @@ const { CocktailQ, CocktailA , User, Vote } = require('../db/models');
 const { requireAuth } = require('../auth');
 
 const cocktailQValidators = [
+    check('title')
+        .exists({ checkFalsy: true})
+        .withMessage('FIELD REQUIRED'),
     check('question')
         .exists({ checkFalsy: true })
         .withMessage('FIELD REQUIRED')
@@ -32,9 +35,10 @@ router.get('/new', requireAuth, csrfProtection, asyncHandler(async (req, res) =>
 /* POST posting a new question. */
 router.post('/new', csrfProtection, cocktailQValidators, asyncHandler(async (req, res) => {
     const {
+        title,
         question,
     } = req.body
-    await CocktailQ.create({question, userId: req.session.auth.userId})
+    await CocktailQ.create({title, question, userId: req.session.auth.userId})
         res.redirect('/CocktailQs')
 }));
 
